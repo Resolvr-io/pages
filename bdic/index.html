@@ -259,7 +259,7 @@
                 <h2 class="text-4xl mb-4">Become a Resolvr Partner</h2>
                 <p class="text-lg text-gray-600 mb-4">Ready to strengthen your platform and unlock a new bitcoin-native revenue stream?</p>
                 <p class="text-lg text-gray-600 mb-8">The process is simple and starts with a conversation.</p>
-                <a href="https://www.resolvr.io/custodians/inquiry" target="_blank" rel="noopener noreferrer" class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity">Contact Us to Get Started</a>
+                <a href="https://www.resolvr.io/custodians-form" target="_blank" rel="noopener noreferrer" class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity">Contact Us to Get Started</a>
             </div>
         </section>
 
@@ -396,7 +396,8 @@
                                 position: 'top',
                                 labels: {
                                     font: { size: isMobile ? 12 : 14, family: 'Satoshi' }
-                                }
+                                },
+                                onClick: null // Disable clicking legend to hide/show datasets
                             },
                             tooltip: {
                                 enabled: true,
