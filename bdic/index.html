@@ -113,11 +113,11 @@
 
     <header class="fixed-bg-container py-8 md:py-6 px-8">
         <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true">
-            <source src="/bdic/images/stars-timelapse.mp4" type="video/mp4">
+            <source src="images/stars-timelapse.mp4" type="video/mp4">
         </video>
         <nav class="fixed-bg-content flex items-center justify-between">
             <a href="https://www.resolvr.io" target="_blank" rel="noopener noreferrer">
-                <img src="/bdic/images/resolvr-logo-white.svg" alt="Resolvr Logo" style="width: 110px; height: auto;">
+                <img src="images/resolvr-logo-white.svg" alt="Resolvr Logo" style="width: 110px; height: auto;">
             </a>
         </nav>
     </header>
@@ -137,10 +137,10 @@
 
         <section class="fixed-bg-container w-full h-32">
             <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true">
-                <source src="/bdic/images/stars-timelapse-4.mp4" type="video/mp4">
+                <source src="images/stars-timelapse-4.mp4" type="video/mp4">
             </video>
         </section>
-        
+
         <section class="py-20 px-6 bg-gray-50">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-16">
@@ -213,7 +213,7 @@
                     <p class="text-gray-600 text-lg">See your compounding revenue potential based on a 20,000-user platform.</p>
                 </div>
                 <div class="bg-white p-8 rounded-lg border border-gray-200">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-8">
                         <div>
                             <p class="text-gray-500 text-sm tracking-wider">USER BASE (Y1)</p>
                             <p class="text-5xl accent-orange">23,000</p>
@@ -230,6 +230,21 @@
                             <p class="text-sm text-gray-500">(of total premiums)</p>
                         </div>
                     </div>
+
+                    <!-- New Key Metrics Section -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center mb-12">
+                        <div>
+                            <p class="text-gray-500 text-sm tracking-wider">AVERAGE BTC HOLDINGS INSURED</p>
+                            <p class="text-5xl accent-orange">1 BTC</p>
+                            <p class="text-sm text-gray-500">per user (Total: 1,150 BTC)</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm tracking-wider">TOTAL ANNUAL PREMIUMS (Y1)</p>
+                            <p class="text-5xl accent-orange">5.75 BTC</p>
+                            <p class="text-sm text-gray-500">(at 0.50% rate)</p>
+                        </div>
+                    </div>
+
                     <p class="text-center text-gray-600 mb-4 text-lg">Projected Annual Affiliate Fee</p>
                     <div class="chart-container">
                         <canvas id="revenueChart"></canvas>
@@ -277,14 +292,14 @@
 
     <footer class="fixed-bg-container text-center pt-24 pb-4 md:pt-32 md:pb-6 text-white text-sm">
         <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true">
-            <source src="/bdic/images/stars-timelapse.mp4" type="video/mp4">
+            <source src="images/stars-timelapse.mp4" type="video/mp4">
         </video>
         <div class="fixed-bg-video" style="background: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.8) 100%); pointer-events: none;"></div>
         <div class="fixed-bg-content">
             <p>© 2025 Resolvr, Inc.</p>
         </div>
     </footer>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- Chart Animation ---
@@ -326,84 +341,84 @@
                             padding: isMobile ? { top: 5, right: 0, left: 0, bottom: 0 } : { top: 10, right: 10, left: 10, bottom: 5 }
                         },
                         scales: {
-                            'y-usd': { 
-                                beginAtZero: true, 
-                                type: 'linear', 
-                                position: 'left', 
-                                title: { 
-                                    display: true, 
-                                    text: 'Annual Fee (USD)', 
-                                    font: { size: isMobile ? 11 : 14, family: 'Satoshi', weight: '500'}, 
-                                    color: '#4b5563', 
-                                    padding: { bottom: 5 } 
-                                }, 
-                                ticks: { 
-                                    callback: function(value) { 
+                            'y-usd': {
+                                beginAtZero: true,
+                                type: 'linear',
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Annual Fee (USD)',
+                                    font: { size: isMobile ? 11 : 14, family: 'Satoshi', weight: '500'},
+                                    color: '#4b5563',
+                                    padding: { bottom: 5 }
+                                },
+                                ticks: {
+                                    callback: function(value) {
                                         if (isMobile && value > 999) {
                                             return '$' + (value / 1000) + 'k';
                                         }
-                                        return '$' + new Intl.NumberFormat().format(value); 
-                                    }, 
-                                    font: { size: isMobile ? 10 : 12, family: 'Satoshi', weight: '500' }, 
-                                    color: '#4b5563' 
-                                }, 
-                                grid: { color: '#e5e7eb' } 
+                                        return '$' + new Intl.NumberFormat().format(value);
+                                    },
+                                    font: { size: isMobile ? 10 : 12, family: 'Satoshi', weight: '500' },
+                                    color: '#4b5563'
+                                },
+                                grid: { color: '#e5e7eb' }
                             },
-                            'y-btc': { 
-                                beginAtZero: true, 
-                                type: 'linear', 
-                                position: 'right', 
-                                title: { 
-                                    display: true, 
-                                    text: 'Annual Fee (BTC)', 
-                                    font: { size: isMobile ? 11 : 14, family: 'Satoshi', weight: '500'}, 
-                                    color: '#4b5563', 
-                                    padding: { bottom: 5 } 
-                                }, 
-                                ticks: { 
-                                    callback: function(value) { return value + ' BTC'; }, 
-                                    font: { size: isMobile ? 10 : 12, family: 'Satoshi', weight: '500' }, 
-                                    color: '#4b5563' 
-                                }, 
-                                grid: { drawOnChartArea: false } 
+                            'y-btc': {
+                                beginAtZero: true,
+                                type: 'linear',
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: 'Annual Fee (BTC)',
+                                    font: { size: isMobile ? 11 : 14, family: 'Satoshi', weight: '500'},
+                                    color: '#4b5563',
+                                    padding: { bottom: 5 }
+                                },
+                                ticks: {
+                                    callback: function(value) { return value + ' BTC'; },
+                                    font: { size: isMobile ? 10 : 12, family: 'Satoshi', weight: '500' },
+                                    color: '#4b5563'
+                                },
+                                grid: { drawOnChartArea: false }
                             },
-                            x: { 
-                                ticks: { 
-                                    font: { size: isMobile ? 12 : 16, family: 'Satoshi', weight: '500' }, 
-                                    color: '#1f2937' 
-                                }, 
-                                grid: { display: false } 
+                            x: {
+                                ticks: {
+                                    font: { size: isMobile ? 12 : 16, family: 'Satoshi', weight: '500' },
+                                    color: '#1f2937'
+                                },
+                                grid: { display: false }
                             }
                         },
                         plugins: {
-                            legend: { 
-                                display: true, 
-                                position: 'top', 
-                                labels: { 
-                                    font: { size: isMobile ? 12 : 14, family: 'Satoshi' } 
-                                } 
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    font: { size: isMobile ? 12 : 14, family: 'Satoshi' }
+                                }
                             },
-                            tooltip: { 
-                                enabled: true, 
-                                backgroundColor: '#000000', 
-                                titleFont: { size: 16, family: 'Satoshi', weight: '500' }, 
-                                bodyFont: { size: 14, family: 'Satoshi' }, 
-                                padding: 12, 
-                                cornerRadius: 6, 
-                                callbacks: { 
-                                    label: function(context) { 
-                                        let label = context.dataset.label || ''; 
-                                        if (label) { label += ': '; } 
-                                        if (context.parsed.y !== null) { 
-                                            if (context.dataset.yAxisID === 'y-btc') { 
-                                                label += context.parsed.y.toFixed(3) + ' BTC'; 
-                                            } else { 
-                                                label += '$' + new Intl.NumberFormat().format(context.parsed.y); 
-                                            } 
-                                        } 
-                                        return label; 
-                                    } 
-                                } 
+                            tooltip: {
+                                enabled: true,
+                                backgroundColor: '#000000',
+                                titleFont: { size: 16, family: 'Satoshi', weight: '500' },
+                                bodyFont: { size: 14, family: 'Satoshi' },
+                                padding: 12,
+                                cornerRadius: 6,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed.y !== null) {
+                                            if (context.dataset.yAxisID === 'y-btc') {
+                                                label += context.parsed.y.toFixed(3) + ' BTC';
+                                            } else {
+                                                label += '$' + new Intl.NumberFormat().format(context.parsed.y);
+                                            }
+                                        }
+                                        return label;
+                                    }
+                                }
                             }
                         }
                     }
