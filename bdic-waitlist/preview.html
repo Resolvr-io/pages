@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDIC - Complete Bitcoin Protection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap');
+        body {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 400;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500; /* Satoshi Medium */
+        }
+        .accent-orange {
+            color: #FB923C;
+        }
+        .text-accent-orange {
+            color: #FB923C;
+        }
+        .accent-blue {
+            color: #14AFFE;
+        }
+        .bg-accent-orange {
+            background-color: #FB923C;
+        }
+        .border-accent-blue {
+            border-color: #14AFFE;
+        }
+        .border-accent-orange {
+            border-color: #FB923C;
+        }
+        /* Fixed background video container */
+        .fixed-bg-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .fixed-bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .fixed-bg-content {
+            position: relative;
+            z-index: 1;
+        }
+        /* Style for scroll-in animation */
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Style for orange bullet points */
+        .list-orange-bullets li::marker {
+            color: #FB923C;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed-bg-container py-6 px-8">
+        <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true">
+            <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/waves-sunset.mp4" type="video/mp4">
+        </video>
+        <nav class="fixed-bg-content flex items-center justify-between">
+            <a href="#">
+                <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/bdic_reg_logo_white.svg" alt="BDIC(R) Logo" style="width: 110px; height: auto;">
+            </a>
+        </nav>
+    </header>
+
+    <main class="w-full">
+        <section class="py-24 px-6 bg-black text-white">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-6xl leading-tight mb-6 text-left">Protection beyond the vault.</h1>
+                <div class="flex flex-col">
+                    <h2 class="text-xl md:text-2xl mb-6 accent-orange text-left">Introducing BDIC™ (Bitcoin Denominated Insurance Collaborative)</h2>
+                    <p class="text-lg md:text-xl text-gray-300 text-left">
+                        How secure is your custody from real-world threats? BDIC™ is the first bitcoin-denominated insurance offering designed to protect your assets from physical and digital dangers. Get complete peace of mind, embedded directly in the wallets and custody platforms you already trust.
+                    </p>
+                    <div class="mt-10">
+                        <a href="#waitlist" class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity">Join the Waitlist</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fixed-bg-container w-full h-32">
+        </section>
+        
+        <section class="py-20 px-6 bg-gray-50">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl mb-3">Protection for Every Scenario</h2>
+                    <p class="text-lg text-gray-600">Cold storage and multisig protect your keys. BDIC™ protects your future.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <h3 class="text-2xl mb-3">Digital Theft & Hacking</h3>
+                        <p class="text-gray-600">Comprehensive coverage against loss from sophisticated remote hacks, malware, or stolen private keys.</p>
+                    </div>
+                    <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <h3 class="text-2xl mb-3">Physical Coercion & Crime</h3>
+                        <p class="text-gray-600">Protection against loss due to violent crime, kidnapping, ransom, physical assault, or coercion, both at home and away.</p>
+                    </div>
+                    <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <h3 class="text-2xl mb-3">Disaster & &ldquo;Acts of God&rdquo;</h3>
+                        <p class="text-gray-600">Insure your physical devices and assets against extreme weather, fire, floods, and other home or office disasters.</p>
+                    </div>
+                     <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <h3 class="text-2xl mb-3">Bitcoin-Native</h3>
+                        <p class="text-gray-600">Your policy is denominated in bitcoin. Your protection scales with your assets, and claims are settled in BTC.</p>
+                    </div>
+                     <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <h3 class="text-2xl mb-3">A Policy for Any Custody</h3>
+                        <p class="text-gray-600">BDIC™ is designed to integrate with self-custody cold storage, multisig solutions, and major exchanges.</p>
+                    </div>
+                     <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <h3 class="text-2xl mb-3">Embedded & Seamless</h3>
+                        <p class="text-gray-600">No new hardware. No complex setup. Activate and manage your policy directly within your existing wallet's interface.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl mb-3">Get Started in 3 Simple Steps</h2>
+                    <p class="text-gray-600 text-lg">Secure your spot to be the first to access bitcoin-native insurance.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">1</div>
+                        <h3 class="text-xl mb-2">Join the Waitlist</h3>
+                        <p class="text-gray-600 px-4">Complete our brief questionnaire to help us understand your custody setup and specific security needs.</p>
+                    </div>
+                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">2</div>
+                        <h3 class="text-xl mb-2">Get Your Invite</h3>
+                        <p class="text-gray-600 px-4">We'll notify you as soon as BDIC™ is available on your preferred wallet, exchange, or custody platform.</p>
+                    </div>
+                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
+                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">3</div>
+                        <h3 class="text-xl mb-2">Activate & Relax</h3>
+                        <p class="text-gray-600 px-4">With a few clicks, you can activate your policy and gain complete peace of mind for your bitcoin holdings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="waitlist" class="text-center py-20 px-6 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl mb-4">Secure Your Future Today</h2>
+                <p class="text-lg text-gray-600 mb-4">Don't wait for a disaster. Join the waitlist to be the first to access true bitcoin-native insurance.</p>
+                <p class="text-lg text-gray-600 mb-8">Your answers to our brief questionnaire will help us match our marketplace offerings to your exact needs.</p>
+                <a href="https://tally.so/r/mOKxXA" target="_blank" rel="noopener noreferrer" class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity">Join the Waitlist & Take the Survey</a>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-6xl mx-auto text-gray-700">
+                <h2 class="text-4xl mb-12 text-black text-center">About BDIC™</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div class="text-left">
+                        <p class="text-lg mb-4">BDIC™ is a collaborative network of global, regulated insurance carriers, powered by Resolvr.</p>
+                        <p class="text-lg mb-4">Our mission is to bring comprehensive, real-world protection to the bitcoin ecosystem, making it more stable and secure for users like you.</p>
+                        <p class="text-lg font-medium">We provide essential risk management embedded directly into the wallets and custody platforms you already trust. This is peace of mind, built for the bitcoin economy.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-4">Key Features</h4>
+                        <ul class="list-disc list-outside space-y-3 text-lg list-orange-bullets pl-5">
+                            <li>Bitcoin-denominated policies that scale with your assets</li>
+                            <li>Claims paid directly to you in BTC</li>
+                            <li>Seamless integration inside your existing wallet</li>
+                            <li>Full coverage for digital theft, physical crime, and disasters</li>
+                            <li>Powered by Resolvr's industry-backed, bitcoin-native technology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="fixed-bg-container text-center pt-40 pb-8 text-white text-sm">
+        <div class="fixed-bg-video" style="background: linear-gradient(to bottom, transparent 85%, rgba(0,0,0,0.8)); pointer-events: none;"></div>
+        <div class="fixed-bg-content">
+            <p>© 2025 Resolvr, Inc.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Scroll Animation for Cards and Steps ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            if (animatedElements.length > 0) {
+                const elementObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            elementObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                animatedElements.forEach((el, index) => {
+                    // Stagger the animation by adding a delay
+                    el.style.transitionDelay = `${index * 100}ms`;
+                    elementObserver.observe(el);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
