@@ -54,6 +54,26 @@
             object-fit: cover;
             object-position: center;
             z-index: -1;
+            background-image: url('https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/lone-tree-mountainside.jpg');
+            background-size: cover;
+            background-position: center;
+            pointer-events: none;
+        }
+        /* Hide all video controls and play button */
+        .fixed-bg-video::-webkit-media-controls {
+            display: none !important;
+            opacity: 0 !important;
+        }
+        .fixed-bg-video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+            opacity: 0 !important;
+        }
+        .fixed-bg-video::-webkit-media-controls-play-button {
+            display: none !important;
+            opacity: 0 !important;
+        }
+        .fixed-bg-video::-webkit-media-controls-panel {
+            display: none !important;
         }
         /* Mobile video positioning - show more of the left side */
         @media (max-width: 768px) {
@@ -83,7 +103,7 @@
 <body class="antialiased">
 
     <header class="fixed-bg-container py-6 px-8">
-        <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true">
+        <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true" poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/lone-tree-mountainside.jpg" disablePictureInPicture webkit-playsinline x-webkit-airplay="deny">
             <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/lone-tree-mountainside.mp4" type="video/mp4">
         </video>
         <nav class="fixed-bg-content flex items-center justify-between">
