@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolvr ILS - Bitcoin Native Yield</title>
+    <link rel="icon" type="image/x-icon" href="https://www.resolvr.io/favicon.ico">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Generate native bitcoin yield. Allocate a portion of your treasury to back the insurance operations of licensed carriers and participate in the profits of the Bitcoin insurance market.">
+    <meta name="keywords" content="Bitcoin ILS, Bitcoin yield, Bitcoin-native yield, Bitcoin-denominated insurance, Crypto insurance, Insurance Linked Securities">
+    <meta name="creator" content="Resolvr, Inc.">
+    <meta name="publisher" content="Resolvr, Inc.">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Resolvr ILS - Bitcoin Native Yield">
+    <meta property="og:description" content="Generate native bitcoin yield. Allocate a portion of your treasury to back the insurance operations of licensed carriers and participate in the profits of the Bitcoin insurance market.">
+    <meta property="og:image" content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/social/resolvr/ils/twitter-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Resolvr">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Resolvr_io">
+    <meta name="twitter:creator" content="@Resolvr_io">
+    <meta name="twitter:title" content="Resolvr ILS - Bitcoin Native Yield">
+    <meta name="twitter:description" content="Generate native bitcoin yield. Allocate a portion of your treasury to back the insurance operations of licensed carriers and participate in the profits of the Bitcoin insurance market.">
+    <meta name="twitter:image" content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/social/resolvr/ils/twitter-image.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap');
+        body {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 400;
+            color: #000000;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500; /* Satoshi Medium */
+        }
+        .accent-orange { color: #FB923C; }
+        .text-accent-orange { color: #FB923C; }
+        .bg-accent-orange { background-color: #FB923C; }
+        .border-accent-orange { border-color: #FB923C; }
+
+        .accent-blue { color: #14AFFE; }
+        .bg-accent-blue { background-color: #14AFFE; }
+        .border-accent-blue { border-color: #14AFFE; }
+        
+        .fixed-bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        .fixed-bg-content {
+            position: relative;
+            z-index: 1;
+        }
+        /* Style for scroll-in animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .list-orange-bullets li::marker { color: #FB923C; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <video autoplay muted loop playsinline class="fixed-bg-video" poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stream-in-forest.jpg">
+        <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stream-in-forest.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <div class="fixed-bg-content">
+        <header class="py-8 md:py-6 px-8">
+            <nav class="flex items-center justify-between">
+                <a href="https://www.resolvr.io" target="_blank" rel="noopener noreferrer">
+                    <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg" alt="Resolvr Logo" style="width: 110px; height: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));">
+                </a>
+                <div>
+                    <a href="https://www.resolvr.io/treasuries/inquiry" target="_blank" rel="noopener noreferrer" class="bg-accent-orange text-white font-medium py-3 px-6 rounded-md text-lg hover:opacity-90 transition-opacity">Schedule a Call</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="w-full">
+            <section class="py-24 px-6 text-white" style="background-color: rgba(0, 0, 0, 0.7);">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-6xl md:text-7xl leading-tight mb-6 text-left">Generate a sustainable bitcoin yield flow.</h1>
+                    <div class="flex flex-col">
+                        <p class="text-lg md:text-xl text-gray-300 text-left">
+                            Allocate a portion of your treasury to back the insurance operations of licensed carriers. Participate in the profits of the bitcoin insurance market and earn a sustainable, transparent yield on your bitcoin.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full h-32"></section>
+
+            <section id="benefits" class="py-20 px-6" style="background-color: rgba(249, 250, 251, 0.85);">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl mb-3">The Investor Advantage: Why Allocate to Resolvr ILS?</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <h3 class="text-2xl mb-3">Uncorrelated Returns</h3>
+                            <p class="text-gray-600">Escape crypto market volatility. ILS returns are driven by natural events and standard insurance risk, which have zero correlation to bitcoin price action or DeFi lending cycles.</p>
+                        </div>
+                        <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <h3 class="text-2xl mb-3">Real-World Yield</h3>
+                            <p class="text-gray-600">Earn yield derived from actual insurance premiums. This is a share of the profitable global reinsurance market, not inflationary token rewards.</p>
+                        </div>
+                        <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <h3 class="text-2xl mb-3">Bitcoin-Native</h3>
+                            <p class="text-gray-600">Invest bitcoin and receive the coupon and principal in bitcoin. Your capital stays in the asset you believe in, while working to generate more of it.</p>
+                        </div>
+                         <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <h3 class="text-2xl mb-3">Radical Transparency</h3>
+                            <p class="text-gray-600">Unlike traditional reinsurance funds, Resolvr ILS utilizes on-chain covenants. You can cryptographically verify that your collateral is held in the correct reserve address at all times.</p>
+                        </div>
+                         <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <h3 class="text-2xl mb-3">Atomic Liquidity</h3>
+                            <p class="text-gray-600">Tokenized ILS notes can be traded on secondary markets or peer-to-peer using atomic swaps, offering superior liquidity to traditional multi-year reinsurance contracts.</p>
+                        </div>
+                         <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <h3 class="text-2xl mb-3">Automated "Smart" Payouts</h3>
+                            <p class="text-gray-600">Our platform uses Simplicity smart contracts and independent oracles to automate the payment waterfall. When a premium is paid, you get your share instantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" class="py-20 px-6 bg-white">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl mb-3">A Frictionless Investment Journey</h2>
+                        <p class="text-gray-600 text-lg">We guide you from idle capital to active yield with clarity and ease.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                        <div class="animate-on-scroll">
+                            <div class="text-white bg-accent-blue border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">1</div>
+                            <h3 class="text-xl mb-2">Discover & Analyze</h3>
+                            <p class="text-gray-600 px-4">Find available risk tranches on regulated platforms. Review the prospectus, expected loss models, and yield targets.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                            <div class="text-white bg-accent-blue border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">2</div>
+                            <h3 class="text-xl mb-2">Atomic Investment</h3>
+                            <p class="text-gray-600 px-4">Select your allocation and perform a single, atomic transaction swapping L-BTC for the specific ILS Token.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                            <div class="text-white bg-accent-blue border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">3</div>
+                            <h3 class="text-xl mb-2">Automated Yield</h3>
+                            <p class="text-gray-600 px-4">Premiums collected from the insurance sponsor are automatically routed to your wallet as coupon payments.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                            <div class="text-white bg-accent-blue border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">4</div>
+                            <h3 class="text-xl mb-2">Redeem or Trade</h3>
+                            <p class="text-gray-600 px-4">At maturity, the principal is unlocked and returned. Need liquidity sooner? Swap your ILS token on the secondary market.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="yield-model" class="py-20 px-6" style="background-color: rgba(249, 250, 251, 0.85);">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="text-left mb-12">
+                            <h2 class="text-4xl mb-3">Put your treasury to work.</h2>
+                            <p class="text-gray-600 text-lg">See the compounding potential of allocating a portion of your idle bitcoin holdings to a diversified ILS portfolio.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
+                            <label class="block text-sm font-medium text-gray-800 mb-2">Treasury Allocation (BTC)</label>
+                            <div class="relative mt-2 rounded-md shadow-sm">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <span class="text-gray-400 sm:text-sm">₿</span>
+                                </div>
+                                <input type="number" id="btcInput" value="100" max="1000000" class="block w-full rounded-md border-0 bg-gray-100 py-3 pl-8 pr-4 text-gray-800 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-accent-orange sm:text-lg sm:leading-6" placeholder="0.00">
+                            </div>
+        
+                            <div class="mt-6">
+                                <label class="block text-sm font-medium text-gray-800 mb-2">Target Yield (APY)</label>
+                                <input type="range" id="apyInput" min="4" max="15" value="8.5" step="0.5" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-orange">
+                                <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                    <span>4% (Low Risk)</span>
+                                    <span id="apyValue" class="text-accent-orange font-bold text-base">8.5%</span>
+                                    <span>15% (High Risk)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    
+                    <div class="bg-white rounded-2xl p-8 text-gray-900 shadow-2xl">
+                        <h3 class="text-lg font-semibold mb-6">1-Year Projected Performance</h3>
+                        
+                        <div class="relative h-64 w-full">
+                            <canvas id="yieldChart"></canvas>
+                        </div>
+        
+                        <div class="mt-8 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-gray-100 p-4 rounded-xl">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide">Yield Generated</p>
+                                <p class="text-2xl font-bold text-accent-orange mt-1" id="yieldResult">+8.50 BTC</p>
+                            </div>
+                            <div class="bg-gray-100 p-4 rounded-xl">
+                                <p class="text-xs text-gray-500 uppercase tracking-wide">Total Position</p>
+                                <p class="text-2xl font-bold text-gray-900 mt-1" id="totalResult">108.50 BTC</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-4 text-center italic">*Projections are estimates based on historic ILS market performance. Past performance is not indicative of future results.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="text-center py-20 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl mb-4">Become a Resolvr Treasury Partner</h2>
+                <p class="text-lg text-gray-600 mb-8">Ready to professionalize your bitcoin treasury and access the $40T reinsurance market?</p>
+                <a href="https://www.resolvr.io/treasuries/inquiry" target="_blank" rel="noopener noreferrer" class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity">Schedule a Call</a>
+            </div>
+        </section>
+
+        <section class="py-20 px-6" style="background-color: rgba(249, 250, 251, 0.85);">
+            <div class="max-w-6xl mx-auto text-gray-700">
+                <h2 class="text-4xl mb-12 text-black text-center">About Resolvr</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div class="text-left">
+                        <p class="text-lg mb-4">Resolvr is bridging the global insurance market to bitcoin, making both systems more stable, secure, and capital-efficient.</p>
+                        <p class="text-lg mb-4">We provide essential risk management infrastructure for every participant in the bitcoin ecosystem through bitcoin-native insurance technology.</p>
+                        <p class="text-lg font-medium">Discover what you can do with Resolvr.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-4">What Sets Us Apart</h4>
+                        <ul class="list-disc list-outside space-y-3 text-lg list-orange-bullets pl-5">
+                            <li>Bitcoin-denominated insurance infrastructure</li>
+                            <li>Real-time, cross-border payments and settlements</li>
+                            <li>Automated premium allocation and distribution</li>
+                            <li>Tokenized insurance products on bitcoin rails</li>
+                            <li>Backed by leading bitcoin-focused venture capital</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://www.resolvr.io" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-accent-orange border-2 border-accent-orange font-medium py-4 px-8 rounded-md text-lg hover:bg-orange-50 transition-colors">Learn more at resolvr.io</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="fixed-bg-container text-center pt-40 pb-8 text-white text-sm">
+        <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true" poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/resolvr/stream-in-forest.jpg">
+            <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/resolvr/stream-in-forest.mp4" type="video/mp4">
+        </video>
+        <div class="fixed-bg-video" style="background: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.8) 100%); pointer-events: none;"></div>
+        <div class="fixed-bg-content">
+            <p>&copy; 2025 Resolvr, Inc.</p>
+        </div>
+    </footer>
+
+    <script>
+        const btcInput = document.getElementById('btcInput');
+        const apyInput = document.getElementById('apyInput');
+        const apyValue = document.getElementById('apyValue');
+        const yieldResult = document.getElementById('yieldResult');
+        const totalResult = document.getElementById('totalResult');
+        const ctx = document.getElementById('yieldChart').getContext('2d');
+
+        let myChart;
+
+        function initChart(principal, yieldAmt) {
+            const data = {
+                labels: ['Cold Storage', 'Resolvr ILS'],
+                datasets: [{
+                    label: 'Principal (BTC)',
+                    data: [principal, principal],
+                    backgroundColor: '#4B5563',
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }, {
+                    label: 'Yield (BTC)',
+                    data: [0, yieldAmt],
+                    backgroundColor: '#FB923C',
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true, grid: { display: false } },
+                        y: { stacked: true, beginAtZero: true }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            };
+
+            myChart = new Chart(ctx, config);
+        }
+
+        function updateCalculator() {
+            let principal = parseFloat(btcInput.value) || 0;
+            const max_principal = 1000000;
+            if (principal > max_principal) {
+                principal = max_principal;
+                btcInput.value = max_principal;
+            }
+            const rate = parseFloat(apyInput.value) || 0;
+            const yieldAmt = principal * (rate / 100);
+            const total = principal + yieldAmt;
+
+            // Update Text
+            apyValue.textContent = rate.toFixed(1) + '%';
+            yieldResult.textContent = '+' + yieldAmt.toFixed(2) + ' BTC';
+            totalResult.textContent = total.toFixed(2) + ' BTC';
+
+            // Update Chart
+            if (myChart) {
+                myChart.data.datasets[0].data = [principal, principal];
+                myChart.data.datasets[1].data = [0, yieldAmt];
+                myChart.update();
+            }
+        }
+
+        // Initialize
+        initChart(100, 8.5);
+        updateCalculator();
+
+        // Listeners
+        btcInput.addEventListener('input', updateCalculator);
+        apyInput.addEventListener('input', updateCalculator);
+
+        // --- Scroll Animation for Cards and Steps ---
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        if (animatedElements.length > 0) {
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach((el, index) => {
+                // Stagger the animation by adding a delay
+                el.style.transitionDelay = `${index * 100}ms`;
+                elementObserver.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
