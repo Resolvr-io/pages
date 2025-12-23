@@ -26,6 +26,64 @@
     body {
       font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
+    
+    /* Accordion styles for mobile */
+    @media (max-width: 767px) {
+      .quarter-accordion-item {
+        margin-bottom: 0.75rem;
+      }
+      
+      .quarter-content {
+        display: none;
+        margin-top: 0.75rem;
+      }
+      
+      .quarter-content.active {
+        display: block;
+        animation: slideDown 0.3s ease-out;
+      }
+      
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    
+    /* Desktop: maintain original layout */
+    @media (min-width: 768px) {
+      .mobile-only {
+        display: none !important;
+      }
+      
+      .desktop-buttons {
+        display: grid !important;
+      }
+      
+      .desktop-content-area {
+        display: block !important;
+      }
+    }
+    
+    /* Mobile: accordion layout */
+    @media (max-width: 767px) {
+      .desktop-buttons {
+        display: none !important;
+      }
+      
+      .desktop-content-area {
+        display: none !important;
+      }
+      
+      .mobile-only {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#0A0A0A] text-white">
@@ -80,6 +138,7 @@
             <p class="text-xs text-white/50">Co-Founder, Product</p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -144,8 +203,8 @@
         <div class="h-px bg-gradient-to-r from-orange-500/50 via-white/20 to-transparent"></div>
       </div>
 
-      <!-- Quarter Selector -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-8 md:items-stretch">
+      <!-- Desktop: Quarter Selector -->
+      <div class="desktop-buttons quarter-selector-sticky grid grid-cols-1 md:grid-cols-4 gap-3 mb-8 md:items-stretch">
         <button onclick="showQuarter(0)" class="quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-orange-500 border-orange-500 text-white flex flex-col items-start justify-start">
           <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q1</div>
           <div class="h-px bg-white/30 mb-2 w-full"></div>
@@ -168,7 +227,191 @@
         </button>
       </div>
 
-      <!-- Active Quarter Details -->
+      <!-- Mobile: Accordion -->
+      <div class="mobile-only">
+        <!-- Q1 Accordion Item -->
+        <div class="quarter-accordion-item">
+          <button onclick="toggleMobileQuarter(0)" class="quarter-btn-mobile w-full px-6 py-4 rounded-lg transition-all border bg-orange-500 border-orange-500 text-white flex flex-col items-start justify-start">
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q1</div>
+            <div class="h-px bg-white/30 mb-2 w-full"></div>
+            <div class="text-sm font-normal text-left">The Foundation</div>
+          </button>
+          <div id="mobile-quarter-0" class="quarter-content active border border-white/10 rounded-2xl p-8 bg-white/[0.02]">
+            <div class="flex justify-between items-start mb-8">
+              <div>
+                <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
+                  Strategy Phase
+                </span>
+                <h3 class="text-3xl font-medium text-white">The Foundation</h3>
+                <h4 class="text-white/60 text-lg mt-2">At the start of the year, we established the core concept of BDIC™ and continued outreach on our insurance payments platform.</h4>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">BDIC™ concept "Litepaper" drafted and circulated</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">London Trip: Lloyd's brokers BD & investor pitches</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">
+                  <a href="https://youtube.com/watch?si=hThTJXremE-Sq41q&v=qK7ffYzxiiQ&feature=youtu.be" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500 transition-colors">
+                    Featured on Riskstream Collaborative innovative insurance educational series
+                  </a>
+                </p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Axiom: pitched seed raise and deepened relationship</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Blockstream collaboration begun</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 Accordion Item -->
+        <div class="quarter-accordion-item">
+          <button onclick="toggleMobileQuarter(1)" class="quarter-btn-mobile w-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start">
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q2</div>
+            <div class="h-px bg-white/20 mb-2 w-full"></div>
+            <div class="text-sm font-normal text-left">Realignment and Bridge Building</div>
+          </button>
+          <div id="mobile-quarter-1" class="quarter-content border border-white/10 rounded-2xl p-8 bg-white/[0.02]">
+            <div class="flex justify-between items-start mb-8">
+              <div>
+                <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
+                  Pivot Phase
+                </span>
+                <h3 class="text-3xl font-medium text-white">Realignment and Bridge Building</h3>
+                <h4 class="text-white/60 text-lg mt-2">Q2 marked our shift from pure remittance and payments towards a comprehensive risk transfer infrastructure layer on the Bitcoin network, with BDIC™ as the beachhead product.</h4>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Aaron Daniel takes the helm as full-time CEO</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">MOU executed with Blockstream, aligning partnership goals</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Resolvr hosts Bitcoin Insurance Summit (BIS) in Miami with key insurance participants</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Collaboration begun with Marsh head of Bitcoin Strategy</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">
+                  <a href="https://www.resolvr.io/blog/naddr1qvzqqqr4gupzp5yvjvff7hxz225sz7l497gg2pstzpmxyzjce45j9xe3ude7lnylqy28wumn8ghj7un9d3shjtnyv9kh2uewd9hsqrf3xu6rvvpsxcmnxvekxumqcjdjv4" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500 transition-colors">
+                    Keynote: Insurance Needs Bitcoin @ BIS
+                  </a>
+                </p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Real-Time Premium Manager (RPM) platform refactored to API-first architecture allowing flexible integration</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 Accordion Item -->
+        <div class="quarter-accordion-item">
+          <button onclick="toggleMobileQuarter(2)" class="quarter-btn-mobile w-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start">
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q3</div>
+            <div class="h-px bg-white/20 mb-2 w-full"></div>
+            <div class="text-sm font-normal text-left">Funding & Scale</div>
+          </button>
+          <div id="mobile-quarter-2" class="quarter-content border border-white/10 rounded-2xl p-8 bg-white/[0.02]">
+            <div class="flex justify-between items-start mb-8">
+              <div>
+                <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
+                  Funding Phase
+                </span>
+                <h3 class="text-3xl font-medium text-white">Funding & Scale</h3>
+                <h4 class="text-white/60 text-lg mt-2">By Q3, Resolvr was capitalized by investors that shared our mission to build risk markets on Bitcoin, enabling us to grow our team and execute on that vision.</h4>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Closed seed round led by Axiom Ventures, with participation by Plan B VC Fund, and Dr. Adam Back</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Team Expansion: added experienced engineering, design & marketing talent</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">
+                  <a href="https://www.resolvr.io/blog/naddr1qvzqqqr4gupzp5yvjvff7hxz225sz7l497gg2pstzpmxyzjce45j9xe3ude7lnylqy28wumn8ghj7un9d3shjtnyv9kh2uewd9hsqrf3xu6nsvp4xgmrqd3h8qusva3tm9" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500 transition-colors">
+                    Public Reveal: seed round announced
+                  </a>
+                </p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Founding BDIC™ coverage provider relationship solidified with Soter Insurance</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Nashville Stage: COO Dave Schwab spoke on insurance panel at Bitcoin Park Custody Summit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 Accordion Item -->
+        <div class="quarter-accordion-item">
+          <button onclick="toggleMobileQuarter(3)" class="quarter-btn-mobile w-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start">
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q4</div>
+            <div class="h-px bg-white/20 mb-2 w-full"></div>
+            <div class="text-sm font-normal text-left">The Launch</div>
+          </button>
+          <div id="mobile-quarter-3" class="quarter-content border border-white/10 rounded-2xl p-8 bg-white/[0.02]">
+            <div class="flex justify-between items-start mb-8">
+              <div>
+                <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
+                  Launch Phase
+                </span>
+                <h3 class="text-3xl font-medium text-white">The Launch</h3>
+                <h4 class="text-white/60 text-lg mt-2">Resolvr concluded the year by completing the BDIC™ platform and unveiling the product on the global stage.</h4>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Brand Refresh: New visual identity and company website debut</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Launch Partnership: Liana Business by Wizardsardine agrees to integrate BDIC™</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">Tokenized Reinsurance on Bitcoin: Initial design paper and architecture groundwork in collaboration with Blockstream research and Capital Partners</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <svg class="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-white/70 leading-relaxed">The Launch: Public BDIC™ Launch keynote @ Bitcoin MENA in Abu Dhabi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop: Active Quarter Details -->
+      <div class="desktop-content-area">
       <div id="quarter-0" class="quarter-content border border-white/10 rounded-2xl p-8 md:p-12 bg-white/[0.02]">
         <div class="flex justify-between items-start mb-8">
           <div>
@@ -408,18 +651,20 @@
       <h2 class="text-2xl font-medium text-white mb-8 drop-shadow-lg">Solving the Bitcoin Protection Gap</h2>
       
       <p class="text-[10px] font-medium text-white/60 uppercase tracking-wider drop-shadow">
-        &copy; 2025 Resolvr, Inc. | All rights reserved.
+        © 2025 Resolvr Inc. | Confidential Seed Round Material
       </p>
     </div>
   </footer>
 
   <script>
+    // Desktop: Original behavior
     function showQuarter(index) {
       // Hide all quarters
-      document.querySelectorAll('.quarter-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.desktop-content-area .quarter-content').forEach(el => el.classList.add('hidden'));
       
       // Show selected quarter
-      document.getElementById('quarter-' + index).classList.remove('hidden');
+      const selectedQuarter = document.getElementById('quarter-' + index);
+      selectedQuarter.classList.remove('hidden');
       
       // Update button styles
       document.querySelectorAll('.quarter-btn').forEach((btn, i) => {
@@ -431,6 +676,31 @@
           btn.querySelector('.h-px').className = 'h-px bg-white/20 mb-2 w-full';
         }
       });
+    }
+    
+    // Mobile: Accordion behavior
+    function toggleMobileQuarter(index) {
+      const clickedContent = document.getElementById('mobile-quarter-' + index);
+      const clickedButton = document.querySelectorAll('.quarter-btn-mobile')[index];
+      const isCurrentlyActive = clickedContent.classList.contains('active');
+      
+      // Close all quarters
+      document.querySelectorAll('.mobile-only .quarter-content').forEach(el => {
+        el.classList.remove('active');
+      });
+      
+      // Reset all button styles
+      document.querySelectorAll('.quarter-btn-mobile').forEach((btn, i) => {
+        btn.className = 'quarter-btn-mobile w-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start';
+        btn.querySelector('.h-px').className = 'h-px bg-white/20 mb-2 w-full';
+      });
+      
+      // If it wasn't active, open it
+      if (!isCurrentlyActive) {
+        clickedContent.classList.add('active');
+        clickedButton.className = 'quarter-btn-mobile w-full px-6 py-4 rounded-lg transition-all border bg-orange-500 border-orange-500 text-white flex flex-col items-start justify-start';
+        clickedButton.querySelector('.h-px').className = 'h-px bg-white/30 mb-2 w-full';
+      }
     }
   </script>
 </body>
