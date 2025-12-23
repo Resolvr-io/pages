@@ -6,6 +6,9 @@
   <title>Resolvr - 2025 Year in Review</title>
   <link rel="icon" href="https://www.resolvr.io/favicon.ico" type="image/x-icon">
   
+  <!-- Satoshi Font -->
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap">
+  
   <!-- Open Graph / Social Meta Tags -->
   <meta property="og:title" content="Resolvr - 2025 Year in Review">
   <meta property="og:description" content="2025 marked the transition from theoretical concept to a market-validated, funded product suite.">
@@ -21,7 +24,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
   </style>
 </head>
@@ -37,7 +40,9 @@
   <nav class="relative z-10 border-b border-white/10 px-6 py-4">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
       <div class="flex items-center">
-        <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg" alt="Resolvr" class="h-8" style="max-width: 150px; width: auto;">
+        <a href="https://www.resolvr.io/" target="_blank" rel="noopener noreferrer">
+          <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg" alt="Resolvr" class="h-8" style="max-width: 150px; width: auto;">
+        </a>
       </div>
       <div class="hidden md:flex items-center gap-6 text-xs font-medium uppercase tracking-wider text-white/60">
       </div>
@@ -51,7 +56,7 @@
       <span class="inline-block px-4 py-1.5 bg-black/40 backdrop-blur-sm border border-white/20 text-white/80 text-[10px] font-semibold uppercase tracking-[0.2em] rounded-full mb-6">
         2025 Year in Review
       </span>
-      <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 tracking-tight drop-shadow-lg">
+      <h1 class="text-5xl md:text-7xl font-medium text-white leading-tight mb-6 tracking-tight drop-shadow-lg">
         Bridging Insurance<br>to Bitcoin
       </h1>
       <p class="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
@@ -91,7 +96,7 @@
             </div>
           </div>
           <p class="text-[10px] font-semibold text-white/40 uppercase tracking-wider mb-1">Seed Raise</p>
-          <h3 class="text-xl font-bold text-white mb-1">Axiom Led</h3>
+          <h3 class="text-xl font-medium text-white mb-1">Axiom Led</h3>
           <p class="text-xs text-white/50">w/ Adam Back & Plan B</p>
         </div>
 
@@ -102,7 +107,7 @@
             </div>
           </div>
           <p class="text-[10px] font-semibold text-white/40 uppercase tracking-wider mb-1">Pipeline</p>
-          <h3 class="text-xl font-bold text-white mb-1">$2.5M ARR</h3>
+          <h3 class="text-xl font-medium text-white mb-1">$2.5M ARR</h3>
           <p class="text-xs text-white/50">16 Platform Partners</p>
         </div>
 
@@ -113,7 +118,7 @@
             </div>
           </div>
           <p class="text-[10px] font-semibold text-white/40 uppercase tracking-wider mb-1">Velocity</p>
-          <h3 class="text-xl font-bold text-white mb-1">4x Market</h3>
+          <h3 class="text-xl font-medium text-white mb-1">4x Market</h3>
           <p class="text-xs text-white/50">Concept to pipeline in 6mos</p>
         </div>
 
@@ -124,7 +129,7 @@
             </div>
           </div>
           <p class="text-[10px] font-semibold text-white/40 uppercase tracking-wider mb-1">Status</p>
-          <h3 class="text-xl font-bold text-white mb-1">SOC 2 Ready</h3>
+          <h3 class="text-xl font-medium text-white mb-1">SOC 2 Ready</h3>
           <p class="text-xs text-white/50">Audit-grade Infrastructure</p>
         </div>
       </div>
@@ -135,23 +140,31 @@
   <section class="relative z-10 bg-[#0A0A0A]/90 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-6 py-16">
       <div class="mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Milestone Timeline</h2>
+        <h2 class="text-3xl md:text-4xl font-medium text-white mb-2">Milestone Timeline</h2>
         <div class="h-px bg-gradient-to-r from-orange-500/50 via-white/20 to-transparent"></div>
       </div>
 
       <!-- Quarter Selector -->
-      <div class="flex flex-col gap-3 mb-8">
-        <button onclick="showQuarter(0)" class="quarter-btn px-6 py-3 rounded-lg transition-all font-semibold text-sm border bg-orange-500 border-orange-500 text-white">
-          Q1 • The Foundation
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-8 md:items-stretch">
+        <button onclick="showQuarter(0)" class="quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-orange-500 border-orange-500 text-white flex flex-col items-start justify-start">
+          <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q1</div>
+          <div class="h-px bg-white/30 mb-2 w-full"></div>
+          <div class="text-sm font-normal text-left">The Foundation</div>
         </button>
-        <button onclick="showQuarter(1)" class="quarter-btn px-6 py-3 rounded-lg transition-all font-semibold text-sm border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30">
-          Q2 • Realignment and Bridge Building
+        <button onclick="showQuarter(1)" class="quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start">
+          <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q2</div>
+          <div class="h-px bg-white/20 mb-2 w-full"></div>
+          <div class="text-sm font-normal text-left">Realignment and Bridge Building</div>
         </button>
-        <button onclick="showQuarter(2)" class="quarter-btn px-6 py-3 rounded-lg transition-all font-semibold text-sm border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30">
-          Q3 • Funding & Scale
+        <button onclick="showQuarter(2)" class="quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start">
+          <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q3</div>
+          <div class="h-px bg-white/20 mb-2 w-full"></div>
+          <div class="text-sm font-normal text-left">Funding & Scale</div>
         </button>
-        <button onclick="showQuarter(3)" class="quarter-btn px-6 py-3 rounded-lg transition-all font-semibold text-sm border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30">
-          Q4 • The Launch
+        <button onclick="showQuarter(3)" class="quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start">
+          <div class="text-xs font-semibold uppercase tracking-wider mb-2">Q4</div>
+          <div class="h-px bg-white/20 mb-2 w-full"></div>
+          <div class="text-sm font-normal text-left">The Launch</div>
         </button>
       </div>
 
@@ -162,7 +175,7 @@
             <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
               Strategy Phase
             </span>
-            <h3 class="text-3xl font-bold text-white">The Foundation</h3>
+            <h3 class="text-3xl font-medium text-white">The Foundation</h3>
               <h4 class="text-white/60 text-lg mt-2">At the start of the year, we established the core concept of BDIC™ and continued outreach on our insurance payments platform.</h4>
           </div>
         </div>
@@ -200,7 +213,7 @@
             <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
               Pivot Phase
             </span>
-            <h3 class="text-3xl font-bold text-white">Realignment and Bridge Building</h3>
+            <h3 class="text-3xl font-medium text-white">Realignment and Bridge Building</h3>
                <h4 class="text-white/60 text-lg mt-2">Q2 marked our shift from pure remittance and payments towards a comprehensive risk transfer infrastructure layer on the Bitcoin network, with BDIC™ as the beachhead product.
 </h4>
           </div>
@@ -243,7 +256,7 @@
             <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
               Funding Phase
             </span>
-            <h3 class="text-3xl font-bold text-white">Funding & Scale</h3>
+            <h3 class="text-3xl font-medium text-white">Funding & Scale</h3>
             <h4 class="text-white/60 text-lg mt-2">By Q3, Resolvr was capitalized by investors that shared our mission to build risk markets on Bitcoin, enabling us to grow our team and execute on that vision.</h4>
           </div>
         </div>
@@ -281,7 +294,7 @@
             <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[10px] font-semibold uppercase tracking-wider rounded-full mb-4 inline-block">
               Launch Phase
             </span>
-            <h3 class="text-3xl font-bold text-white">The Launch</h3>
+            <h3 class="text-3xl font-medium text-white">The Launch</h3>
               <h4 class="text-white/60 text-lg mt-2">Resolvr concluded the year by completing the BDIC™ platform and unveiling the product on the global stage.</h4>
           </div>
         </div>
@@ -311,7 +324,7 @@
   <section class="relative z-10 bg-[#0A0A0A]/90 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-6 py-16">
       <div class="mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">BDIC™ Launch at Bitcoin MENA 2025</h2>
+        <h2 class="text-3xl md:text-4xl font-medium text-white mb-2">BDIC™ Launch at Bitcoin MENA 2025</h2>
         <div class="h-px bg-gradient-to-r from-orange-500/50 via-white/20 to-transparent"></div>
       </div>
 
@@ -332,7 +345,7 @@
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative max-w-6xl mx-auto px-6 py-16">
       <div class="mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Our Product Suite</h2>
+        <h2 class="text-3xl md:text-4xl font-medium text-white mb-2">Our Product Suite</h2>
         <div class="h-px bg-gradient-to-r from-orange-500/50 via-white/20 to-transparent"></div>
       </div>
 
@@ -351,7 +364,7 @@
               <path fill-rule="evenodd" clip-rule="evenodd" d="M42.75 66.5V38H47.5C60.6166 38 71.25 27.3667 71.25 14.25V4.75C71.25 2.12667 69.1234 0 66.5 0H57C43.8838 0 33.2509 10.6323 33.25 23.7482C29.2804 20.7668 24.3466 19 19 19H9.5C6.87667 19 4.75 21.1267 4.75 23.75V33.25C4.75 46.3666 15.3833 57 28.5 57H33.25V66.5H19C8.50658 66.5 0 75.0068 0 85.5V90.25C0 92.8734 2.12667 95 4.75 95H71.25C73.8734 95 76 92.8734 76 90.25V85.5C76 75.0068 67.4932 66.5 57 66.5H42.75ZM19 28.5C26.87 28.5 33.25 34.88 33.25 42.75V47.5H28.5C20.63 47.5 14.25 41.1203 14.25 33.25V28.5H19ZM42.75 23.75V28.5H47.5C55.3703 28.5 61.75 22.12 61.75 14.25V9.5H57C49.1297 9.5 42.75 15.88 42.75 23.75ZM19 76C13.7533 76 9.5 80.2532 9.5 85.5H66.5C66.5 80.2532 62.2468 76 57 76H19Z" fill="currentColor"/>
             </svg>
           </div>
-          <h4 class="text-xl font-bold mb-3 text-white">ILS</h4>
+          <h4 class="text-xl font-medium mb-3 text-white">ILS</h4>
           <p class="text-white/60 leading-relaxed">Bitcoin-native tokenized insurance-linked securities offering sustainable, uncorrelated yield from real-world insurance premiums.</p>
         </a>
 
@@ -361,7 +374,7 @@
               <path d="M73.63 72.13C72.2 72.13 70.86 72.69 69.84 73.7L67.61 75.93C66.26 64.72 59.98 54.45 49.82 46.99C59.97 39.53 66.26 29.26 67.61 18.05L69.84 20.28C70.85 21.3 72.2 21.85 73.63 21.85C75.06 21.85 76.4 21.29 77.42 20.28C78.44 19.26 79.02 17.87 79.02 16.48C79.02 15.09 78.44 13.7 77.42 12.68L66.32 1.57C65.31 0.56 63.96 0 62.52 0C61.08 0 59.73 0.56 58.72 1.57L47.58 12.68C46.56 13.69 46 15.05 46 16.49C46 17.93 46.56 19.28 47.57 20.29C48.58 21.31 49.94 21.86 51.37 21.86C52.8 21.86 54.16 21.3 55.17 20.29L56.59 18.86C54.82 27.68 48.73 35.65 39.52 40.94C30.29 35.64 24.19 27.68 22.42 18.86L23.85 20.29C24.86 21.31 26.22 21.86 27.65 21.86C29.08 21.86 30.44 21.3 31.45 20.29C32.46 19.27 33.02 17.92 33.02 16.49C33.02 15.05 32.46 13.7 31.44 12.68L20.3 1.57C19.28 0.56 17.93 0 16.5 0C15.07 0 13.71 0.56 12.7 1.57L1.6 12.68C0.58 13.7 0 15.09 0 16.48C0 17.87 0.58 19.26 1.6 20.28C2.62 21.3 3.96 21.85 5.39 21.85C6.82 21.85 8.16 21.29 9.18 20.28L11.41 18.05C12.75 29.26 19.04 39.53 29.2 46.99C19.05 54.45 12.76 64.72 11.41 75.93L9.18 73.7C8.17 72.68 6.82 72.12 5.39 72.12C3.96 72.12 2.62 72.68 1.6 73.7C0.58 74.72 0 76.11 0 77.5C0 78.89 0.58 80.28 1.6 81.3L12.7 92.41C13.71 93.42 15.06 93.98 16.5 93.98C17.94 93.98 19.29 93.42 20.3 92.41L31.44 81.3C32.46 80.29 33.02 78.94 33.02 77.5C33.02 76.06 32.46 74.71 31.45 73.69C30.44 72.67 29.08 72.11 27.65 72.11C26.22 72.11 24.86 72.67 23.85 73.68L22.42 75.11C24.19 66.29 30.28 58.32 39.49 53.03C48.71 58.33 54.82 66.29 56.59 75.11L55.17 73.69C54.15 72.67 52.8 72.12 51.37 72.12C49.94 72.12 48.58 72.68 47.57 73.69C46.56 74.71 46 76.06 46 77.49C46 78.93 46.56 80.28 47.58 81.3L58.72 92.41C59.74 93.42 61.09 93.98 62.52 93.98C63.95 93.98 65.31 93.42 66.32 92.41L77.42 81.3C78.44 80.28 79.02 78.89 79.02 77.5C79.02 76.11 78.44 74.72 77.42 73.7C76.4 72.68 75.06 72.13 73.63 72.13Z" fill="currentColor"/>
             </svg>
           </div>
-          <h4 class="text-xl font-bold mb-3 text-white">RPM</h4>
+          <h4 class="text-xl font-medium mb-3 text-white">RPM</h4>
           <p class="text-white/60 leading-relaxed">Real-time premium management platform with API-first architecture enabling automated distribution and settlement for modern insurance operations.</p>
         </a>
       </div>
@@ -388,9 +401,11 @@
     
     <div class="relative py-16 text-center">
       <div class="flex items-center justify-center mb-6">
-        <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg" alt="Resolvr" class="h-8">
+        <a href="https://www.resolvr.io/" target="_blank" rel="noopener noreferrer">
+          <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg" alt="Resolvr" class="h-8">
+        </a>
       </div>
-      <h2 class="text-2xl font-bold text-white mb-8 drop-shadow-lg">Solving the Bitcoin Protection Gap</h2>
+      <h2 class="text-2xl font-medium text-white mb-8 drop-shadow-lg">Solving the Bitcoin Protection Gap</h2>
       
       <p class="text-[10px] font-medium text-white/60 uppercase tracking-wider drop-shadow">
         © 2025 Resolvr Inc. | Confidential Seed Round Material
@@ -409,9 +424,11 @@
       // Update button styles
       document.querySelectorAll('.quarter-btn').forEach((btn, i) => {
         if (i === index) {
-          btn.className = 'quarter-btn px-6 py-3 rounded-lg transition-all font-semibold text-sm border bg-orange-500 border-orange-500 text-white';
+          btn.className = 'quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-orange-500 border-orange-500 text-white flex flex-col items-start justify-start';
+          btn.querySelector('.h-px').className = 'h-px bg-white/30 mb-2 w-full';
         } else {
-          btn.className = 'quarter-btn px-6 py-3 rounded-lg transition-all font-semibold text-sm border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30';
+          btn.className = 'quarter-btn h-full px-6 py-4 rounded-lg transition-all border bg-white/[0.02] border-white/10 text-white/60 hover:border-orange-500/30 flex flex-col items-start justify-start';
+          btn.querySelector('.h-px').className = 'h-px bg-white/20 mb-2 w-full';
         }
       });
     }
