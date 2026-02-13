@@ -1,464 +1,852 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolvr | Bitcoin Denominated Insurance Collaborative (BDIC&trade;)</title>
-    <link rel="icon" type="image/x-icon" href="https://www.resolvr.io/favicon.ico">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Resolvr | Bitcoin Denominated Insurance Collaborative (BDIC&trade;)
+        </title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://www.resolvr.io/favicon.ico"
+        />
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Unlock new revenue with embedded bitcoin insurance. The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers.">
-    <meta name="keywords" content="Bitcoin insurance,BDIC&trade;,RPM,Insurance Linked Securities,Bitcoin ILS,Bitcoin yield,Bitcoin-native yield,Bitcoin-denominated insurance,Crypto insurance">
-    <meta name="creator" content="Resolvr, Inc.">
-    <meta name="publisher" content="Resolvr, Inc.">
+        <!-- SEO Meta Tags -->
+        <meta
+            name="description"
+            content="Unlock new revenue with embedded bitcoin insurance. The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers."
+        />
+        <meta
+            name="keywords"
+            content="Bitcoin insurance,BDIC&trade;,RPM,Insurance Linked Securities,Bitcoin ILS,Bitcoin yield,Bitcoin-native yield,Bitcoin-denominated insurance,Crypto insurance"
+        />
+        <meta name="creator" content="Resolvr, Inc." />
+        <meta name="publisher" content="Resolvr, Inc." />
 
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Resolvr | Bitcoin Denominated Insurance Collaborative (BDIC&trade;)">
-    <meta property="og:description" content="Unlock new revenue with embedded bitcoin insurance. The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers.">
-    <meta property="og:image" content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/social/bdic/twitter-image.png">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Resolvr">
-    <meta property="og:locale" content="en_US">
+        <!-- Open Graph / Social Media Meta Tags -->
+        <meta
+            property="og:title"
+            content="Resolvr | Bitcoin Denominated Insurance Collaborative (BDIC&trade;)"
+        />
+        <meta
+            property="og:description"
+            content="Unlock new revenue with embedded bitcoin insurance. The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers."
+        />
+        <meta
+            property="og:image"
+            content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/social/bdic/twitter-image.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Resolvr" />
+        <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Resolvr_io">
-    <meta name="twitter:creator" content="@Resolvr_io">
-    <meta name="twitter:title" content="Resolvr | Bitcoin Denominated Insurance Collaborative (BDIC&trade;)">
-    <meta name="twitter:description" content="Unlock new revenue with embedded bitcoin insurance. The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers.">
-    <meta name="twitter:image" content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/social/bdic/twitter-image.png">
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Resolvr_io" />
+        <meta name="twitter:creator" content="@Resolvr_io" />
+        <meta
+            name="twitter:title"
+            content="Resolvr | Bitcoin Denominated Insurance Collaborative (BDIC&trade;)"
+        />
+        <meta
+            name="twitter:description"
+            content="Unlock new revenue with embedded bitcoin insurance. The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers."
+        />
+        <meta
+            name="twitter:image"
+            content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/social/bdic/twitter-image.png"
+        />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap');
-        body {
-            font-family: 'Satoshi', sans-serif;
-            font-weight: 400;
-            background-color: #FFFFFF;
-            color: #000000;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 500; /* Satoshi Medium */
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 450px;
-        }
-        .accent-orange {
-            color: #FB923C;
-        }
-        .text-accent-orange {
-            color: #FB923C;
-        }
-        .accent-blue {
-            color: #14AFFE;
-        }
-        .bg-accent-orange {
-            background-color: #FB923C;
-        }
-        .bg-accent-blue {
-            background-color: #14AFFE;
-        }
-        .border-accent-blue {
-            border-color: #14AFFE;
-        }
-        .border-accent-orange {
-            border-color: #FB923C;
-        }
-        /* Style for scroll-in animation */
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Style for orange bullet points */
-        .list-orange-bullets li::marker {
-            color: #FB923C;
-        }
-        /* Fixed background video container */
-        .fixed-bg-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .fixed-bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            background-image: url('https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .fixed-bg-video-cropped {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            transform: translateY(-33%);
-        }
-        .fixed-bg-content {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
-</head>
-<body class="antialiased">
-
-    <header class="fixed-bg-container py-8 md:py-6 px-8">
-        <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true" poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg">
-            <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.mp4" type="video/mp4">
-        </video>
-        <nav class="fixed-bg-content flex items-center justify-between">
-            <a href="https://www.resolvr.io" target="_blank" rel="noopener noreferrer">
-                <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr_bdic_lockup_white.svg" alt="Resolvr BDIC Logo" style="width: 242px; height: auto;">
-            </a>
-        </nav>
-    </header>
-
-    <main class="w-full">
-        <section class="py-24 px-6 text-white" style="background-color: rgba(0, 0, 0, 0.8);">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-6xl leading-tight mb-6 text-left">Unlock new revenue with embedded bitcoin insurance.</h1>
-                <div class="flex flex-col">
-                    <h2 class="text-xl md:text-2xl mb-6 accent-orange text-left">Introducing the BDIC&trade; (Bitcoin Denominated Insurance Collaborative) from Resolvr.</h2>
-                    <p class="text-lg md:text-xl text-gray-300 text-left">
-                        The BDIC&trade; is the first and only embedded bitcoin insurance network that connects your platform to a global marketplace of regulated insurance carriers. It allows you to offer your customers what they need most: peace of mind. With a simple integration, your users can purchase licensed, bitcoin-denominated coverage for their assets directly through your platform, strengthening your customer relationships and creating a powerful new revenue stream for your business.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="fixed-bg-container w-full h-32">
-            <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true" poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg">
-                <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.mp4" type="video/mp4">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            @import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap");
+            body {
+                font-family: "Satoshi", sans-serif;
+                font-weight: 400;
+                background-color: #ffffff;
+                color: #000000;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: 500; /* Satoshi Medium */
+            }
+            .chart-container {
+                position: relative;
+                width: 100%;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                height: 450px;
+            }
+            .accent-orange {
+                color: #fb923c;
+            }
+            .text-accent-orange {
+                color: #fb923c;
+            }
+            .accent-blue {
+                color: #14affe;
+            }
+            .bg-accent-orange {
+                background-color: #fb923c;
+            }
+            .bg-accent-blue {
+                background-color: #14affe;
+            }
+            .border-accent-blue {
+                border-color: #14affe;
+            }
+            .border-accent-orange {
+                border-color: #fb923c;
+            }
+            /* Style for scroll-in animation */
+            .animate-on-scroll.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            /* Style for orange bullet points */
+            .list-orange-bullets li::marker {
+                color: #fb923c;
+            }
+            /* Fixed background video container */
+            .fixed-bg-container {
+                position: relative;
+                overflow: hidden;
+            }
+            .fixed-bg-video {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+                background-image: url("https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+            .fixed-bg-video-cropped {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+                transform: translateY(-33%);
+            }
+            .fixed-bg-content {
+                position: relative;
+                z-index: 1;
+            }
+        </style>
+    </head>
+    <body class="antialiased">
+        <header class="fixed-bg-container py-8 md:py-6 px-8">
+            <video
+                autoplay
+                muted
+                loop
+                playsinline
+                class="fixed-bg-video"
+                aria-hidden="true"
+                poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg"
+            >
+                <source
+                    src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.mp4"
+                    type="video/mp4"
+                />
             </video>
-        </section>
+            <nav class="fixed-bg-content flex items-center justify-between">
+                <a
+                    href="https://www.resolvr.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img
+                        src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr_bdic_lockup_white.svg"
+                        alt="Resolvr BDIC Logo"
+                        style="width: 242px; height: auto"
+                    />
+                </a>
+            </nav>
+        </header>
 
-        <section class="py-20 px-6" style="background-color: rgba(249, 250, 251, 0.85);">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl mb-3">The Partner Advantage: Why Integrate with BDIC&trade;?</h2>
+        <main class="w-full">
+            <section
+                class="py-24 px-6 text-white"
+                style="background-color: rgba(0, 0, 0, 0.8)"
+            >
+                <div class="max-w-4xl mx-auto">
+                    <h1
+                        class="text-5xl md:text-6xl leading-tight mb-6 text-left"
+                    >
+                        Unlock new revenue with embedded bitcoin insurance.
+                    </h1>
+                    <div class="flex flex-col">
+                        <h2
+                            class="text-xl md:text-2xl mb-6 accent-orange text-left"
+                        >
+                            Introducing the BDIC&trade; (Bitcoin Denominated
+                            Insurance Collaborative) from Resolvr.
+                        </h2>
+                        <p class="text-lg md:text-xl text-gray-300 text-left">
+                            The BDIC&trade; is the first and only embedded
+                            bitcoin insurance network that connects your
+                            platform to a global marketplace of regulated
+                            insurance carriers. It allows you to offer your
+                            customers what they need most: peace of mind. With a
+                            simple integration, your users can purchase
+                            licensed, bitcoin-denominated coverage for their
+                            assets directly through your platform, strengthening
+                            your customer relationships and creating a powerful
+                            new revenue stream for your business.
+                        </p>
+                    </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <h3 class="text-2xl mb-3">Effortless Revenue Stream</h3>
-                        <p class="text-gray-600">Earn affiliate fees on all insurance premiums generated through your platform. Simply add a referral link to start earning passive, bitcoin-denominated revenue.</p>
-                    </div>
-                    <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <h3 class="text-2xl mb-3">Enhance User Trust</h3>
-                        <p class="text-gray-600">Give your customers true peace of mind. By reducing user anxiety around asset security, you build deeper trust and make your platform the default choice for security-conscious users.</p>
-                    </div>
-                    <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <h3 class="text-2xl mb-3">Boost Retention &amp; Market Share</h3>
-                        <p class="text-gray-600">Differentiate your platform and gain a competitive edge. Insurance gives users a compelling reason to keep their assets with you, boosting long-term retention and encouraging greater inflows as users consolidate their holdings.</p>
-                    </div>
-                     <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <h3 class="text-2xl mb-3">Bitcoin-Native</h3>
-                        <p class="text-gray-600">The entire BDIC&trade; experience is built for the bitcoin economy. It integrates directly with custodial exchanges, collaborative custody platforms, and wallets to offer individual, bitcoin-denominated protection. Premiums can be paid in bitcoin, and claims can be settled in bitcoin.</p>
-                    </div>
-                     <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <h3 class="text-2xl mb-3">Customer Choice &amp; Flexibility</h3>
-                        <p class="text-gray-600">Empower customers to buy the policy that's right for them. Customers can pick the limits and coverages that fit their needs, whether it's fully denominated in bitcoin or remains in fiat. Premium payments are collected seamlessly in any currency—including bitcoin—through Resolvr's integrated payments portal.</p>
-                    </div>
-                     <div class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <h3 class="text-2xl mb-3">Simple, Seamless Integration</h3>
-                        <p class="text-gray-600">Getting started is incredibly easy. We provide a referral link that directs your users to our secure, co-branded portal. We handle the application, underwriting, payment, and policy management.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="py-20 px-6 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl mb-3">A Frictionless Journey for Your Users</h2>
-                    <p class="text-gray-600 text-lg">We guide your customers from discovery to an active policy with clarity and ease.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-                        <h3 class="text-xl mb-2">Click &amp; Apply</h3>
-                        <p class="text-gray-600 px-4">A simple "Insure" CTA on your platform directs users to our co-branded portal to complete a straightforward application.</p>
-                    </div>
-                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-                        <h3 class="text-xl mb-2">Automated Underwriting</h3>
-                        <p class="text-gray-600 px-4">The application is sent for instant review, and the user receives clear email notifications on the status.</p>
-                    </div>
-                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-                        <h3 class="text-xl mb-2">Pay &amp; Finalize</h3>
-                        <p class="text-gray-600 px-4">Once approved, the user pays the premium via BTC, Lightning, or fiat through a secure email link.</p>
-                    </div>
-                    <div class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out">
-                        <div class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4">4</div>
-                        <h3 class="text-xl mb-2">Activate &amp; View</h3>
-                        <p class="text-gray-600 px-4">Upon payment, the policy is activated. The user gets a confirmation and can view their policy on the BDIC dashboard.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <section class="fixed-bg-container w-full h-32">
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    class="fixed-bg-video"
+                    aria-hidden="true"
+                    poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg"
+                >
+                    <source
+                        src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.mp4"
+                        type="video/mp4"
+                    />
+                </video>
+            </section>
 
-        <section class="py-20 px-6" style="background-color: rgba(249, 250, 251, 0.85);">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl mb-3">Illustrative Revenue Model</h2>
-                    <p class="text-gray-600 text-lg">See your compounding revenue potential based on a 100,000-user platform.</p>
+            <section
+                class="py-20 px-6"
+                style="background-color: rgba(249, 250, 251, 0.85)"
+            >
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl mb-3">
+                            The Partner Advantage: Why Integrate with
+                            BDIC&trade;?
+                        </h2>
+                    </div>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        <div
+                            class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <h3 class="text-2xl mb-3">
+                                Effortless Revenue Stream
+                            </h3>
+                            <p class="text-gray-600">
+                                Earn affiliate fees on all insurance premiums
+                                generated through your platform. Simply add a
+                                referral link to start earning passive,
+                                bitcoin-denominated revenue.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <h3 class="text-2xl mb-3">Enhance User Trust</h3>
+                            <p class="text-gray-600">
+                                Give your customers true peace of mind. By
+                                reducing user anxiety around asset security, you
+                                build deeper trust and make your platform the
+                                default choice for security-conscious users.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <h3 class="text-2xl mb-3">
+                                Boost Retention &amp; Market Share
+                            </h3>
+                            <p class="text-gray-600">
+                                Differentiate your platform and gain a
+                                competitive edge. Insurance gives users a
+                                compelling reason to keep their assets with you,
+                                boosting long-term retention and encouraging
+                                greater inflows as users consolidate their
+                                holdings.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <h3 class="text-2xl mb-3">Bitcoin-Native</h3>
+                            <p class="text-gray-600">
+                                The entire BDIC&trade; experience is built for
+                                the bitcoin economy. It integrates directly with
+                                custodial exchanges, collaborative custody
+                                platforms, and wallets to offer individual,
+                                bitcoin-denominated protection. Premiums can be
+                                paid in bitcoin, and claims can be settled in
+                                bitcoin.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <h3 class="text-2xl mb-3">
+                                Customer Choice &amp; Flexibility
+                            </h3>
+                            <p class="text-gray-600">
+                                Empower customers to buy the policy that's right
+                                for them. Customers can pick the limits and
+                                coverages that fit their needs, whether it's
+                                fully denominated in bitcoin or remains in fiat.
+                                Premium payments are collected seamlessly in any
+                                currency—including bitcoin—through Resolvr's
+                                integrated payments portal.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll bg-white p-8 rounded-lg border border-gray-200 shadow-lg opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <h3 class="text-2xl mb-3">
+                                Simple, Seamless Integration
+                            </h3>
+                            <p class="text-gray-600">
+                                Getting started is incredibly easy. We provide a
+                                referral link that directs your users to our
+                                secure, co-branded portal. We handle the
+                                application, underwriting, payment, and policy
+                                management.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-8 rounded-lg border border-gray-200">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-8">
-                        <div>
-                            <p class="text-gray-500 text-sm tracking-wider">USER BASE (Y1)</p>
-                            <p class="text-5xl accent-orange">115,000</p>
-                            <p class="text-sm text-gray-500">(100k + 15% growth)</p>
+            </section>
+
+            <section class="py-20 px-6 bg-white">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl mb-3">
+                            A Frictionless Journey for Your Users
+                        </h2>
+                        <p class="text-gray-600 text-lg">
+                            We guide your customers from discovery to an active
+                            policy with clarity and ease.
+                        </p>
+                    </div>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+                    >
+                        <div
+                            class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <div
+                                class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4"
+                            >
+                                1
+                            </div>
+                            <h3 class="text-xl mb-2">Click &amp; Apply</h3>
+                            <p class="text-gray-600 px-4">
+                                A simple "Insure" CTA on your platform directs
+                                users to our co-branded portal to complete a
+                                straightforward application.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <div
+                                class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4"
+                            >
+                                2
+                            </div>
+                            <h3 class="text-xl mb-2">Automated Underwriting</h3>
+                            <p class="text-gray-600 px-4">
+                                The application is sent for instant review, and
+                                the user receives clear email notifications on
+                                the status.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <div
+                                class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4"
+                            >
+                                3
+                            </div>
+                            <h3 class="text-xl mb-2">Pay &amp; Finalize</h3>
+                            <p class="text-gray-600 px-4">
+                                Once approved, the user pays the premium via
+                                BTC, Lightning, or fiat through a secure email
+                                link.
+                            </p>
+                        </div>
+                        <div
+                            class="animate-on-scroll opacity-0 translate-y-5 transition-all duration-700 ease-out"
+                        >
+                            <div
+                                class="bg-white text-accent-orange border-2 border-accent-blue h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4"
+                            >
+                                4
+                            </div>
+                            <h3 class="text-xl mb-2">Activate &amp; View</h3>
+                            <p class="text-gray-600 px-4">
+                                Upon payment, the policy is activated. The user
+                                gets a confirmation and can view their policy on
+                                the BDIC dashboard.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="py-20 px-6"
+                style="background-color: rgba(249, 250, 251, 0.85)"
+            >
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl mb-3">
+                            Illustrative Revenue Model
+                        </h2>
+                        <p class="text-gray-600 text-lg">
+                            See your compounding revenue potential based on a
+                            100,000-user platform.
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg border border-gray-200">
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-8"
+                        >
+                            <div>
+                                <p class="text-gray-500 text-sm tracking-wider">
+                                    USER BASE (Y1)
+                                </p>
+                                <p class="text-5xl accent-orange">115,000</p>
+                                <p class="text-sm text-gray-500">
+                                    (100k + 15% growth)
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm tracking-wider">
+                                    ADOPTION RATE
+                                </p>
+                                <p class="text-5xl accent-blue">5%</p>
+                                <p class="text-sm text-gray-500">
+                                    (5,750 new policies)
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm tracking-wider">
+                                    YOUR AFFILIATE FEE
+                                </p>
+                                <p class="text-5xl text-black">10%</p>
+                                <p class="text-sm text-gray-500">
+                                    (of total premiums)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- New Key Metrics Section -->
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center mb-12"
+                        >
+                            <div>
+                                <p class="text-gray-500 text-sm tracking-wider">
+                                    AVERAGE BTC HOLDINGS INSURED
+                                </p>
+                                <p class="text-5xl accent-orange">1 BTC</p>
+                                <p class="text-sm text-gray-500">
+                                    per user (total: 5,750 BTC)
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm tracking-wider">
+                                    TOTAL ANNUAL PREMIUMS (Y1)
+                                </p>
+                                <p class="text-5xl accent-orange">28.75 BTC</p>
+                                <p class="text-sm text-gray-500">
+                                    (at 0.50% rate)
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="text-center text-gray-600 mb-4 text-lg">
+                            Projected Annual Affiliate Fee
+                        </p>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                        <p class="text-center mt-4 text-sm text-gray-500">
+                            *Illustrative model with USD equivalents at
+                            $110,000/BTC. Y2 includes 98% renewals from Y1 plus
+                            new sales.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-center py-20 px-6 bg-white">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl mb-4">Become a Resolvr Partner</h2>
+                    <p class="text-lg text-gray-600 mb-4">
+                        Ready to strengthen your platform and unlock a new
+                        bitcoin-native revenue stream?
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        The process is simple and starts with a conversation.
+                    </p>
+                    <a
+                        href="https://www.resolvr.io/custodians-form"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity"
+                        >Contact Us to Get Started</a
+                    >
+                </div>
+            </section>
+
+            <section
+                class="py-20 px-6"
+                style="background-color: rgba(249, 250, 251, 0.85)"
+            >
+                <div class="max-w-6xl mx-auto text-gray-700">
+                    <h2 class="text-4xl mb-12 text-black text-center">
+                        About Resolvr
+                    </h2>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
+                    >
+                        <div class="text-left">
+                            <p class="text-lg mb-4">
+                                Resolvr is bridging the global insurance market
+                                to bitcoin, making both systems more stable,
+                                secure, and capital-efficient.
+                            </p>
+                            <p class="text-lg mb-4">
+                                We provide essential risk management
+                                infrastructure for every participant in the
+                                bitcoin ecosystem through bitcoin-native
+                                insurance technology.
+                            </p>
+                            <p class="text-lg font-medium">
+                                Discover what you can do with Resolvr.
+                            </p>
                         </div>
                         <div>
-                            <p class="text-gray-500 text-sm tracking-wider">ADOPTION RATE</p>
-                            <p class="text-5xl accent-blue">5%</p>
-                            <p class="text-sm text-gray-500">(5,750 new policies)</p>
-                        </div>
-                        <div>
-                             <p class="text-gray-500 text-sm tracking-wider">YOUR AFFILIATE FEE</p>
-                            <p class="text-5xl text-black">10%</p>
-                            <p class="text-sm text-gray-500">(of total premiums)</p>
+                            <h4 class="text-xl font-medium mb-4">
+                                What Sets Us Apart
+                            </h4>
+                            <ul
+                                class="list-disc list-outside space-y-3 text-lg list-orange-bullets pl-5"
+                            >
+                                <li>
+                                    Bitcoin-denominated insurance infrastructure
+                                </li>
+                                <li>
+                                    Real-time, cross-border payments and
+                                    settlements
+                                </li>
+                                <li>
+                                    Automated premium allocation and
+                                    distribution
+                                </li>
+                                <li>
+                                    Tokenized insurance products on bitcoin
+                                    rails
+                                </li>
+                                <li>
+                                    Backed by leading bitcoin-focused venture
+                                    capital
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- New Key Metrics Section -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center mb-12">
-                        <div>
-                            <p class="text-gray-500 text-sm tracking-wider">AVERAGE BTC HOLDINGS INSURED</p>
-                            <p class="text-5xl accent-orange">1 BTC</p>
-                            <p class="text-sm text-gray-500">per user (total: 5,750 BTC)</p>
-                        </div>
-                        <div>
-                            <p class="text-gray-500 text-sm tracking-wider">TOTAL ANNUAL PREMIUMS (Y1)</p>
-                            <p class="text-5xl accent-orange">28.75 BTC</p>
-                            <p class="text-sm text-gray-500">(at 0.50% rate)</p>
-                        </div>
-                    </div>
-
-                    <p class="text-center text-gray-600 mb-4 text-lg">Projected Annual Affiliate Fee</p>
-                    <div class="chart-container">
-                        <canvas id="revenueChart"></canvas>
-                    </div>
-                    <p class="text-center mt-4 text-sm text-gray-500">*Illustrative model with USD equivalents at $110,000/BTC. Y2 includes 98% renewals from Y1 plus new sales.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="text-center py-20 px-6 bg-white">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl mb-4">Become a Resolvr Partner</h2>
-                <p class="text-lg text-gray-600 mb-4">Ready to strengthen your platform and unlock a new bitcoin-native revenue stream?</p>
-                <p class="text-lg text-gray-600 mb-8">The process is simple and starts with a conversation.</p>
-                <a href="https://www.resolvr.io/custodians-form" target="_blank" rel="noopener noreferrer" class="bg-accent-orange text-white font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity">Contact Us to Get Started</a>
-            </div>
-        </section>
-
-        <section class="py-20 px-6" style="background-color: rgba(249, 250, 251, 0.85);">
-            <div class="max-w-6xl mx-auto text-gray-700">
-                <h2 class="text-4xl mb-12 text-black text-center">About Resolvr</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                    <div class="text-left">
-                        <p class="text-lg mb-4">Resolvr is bridging the global insurance market to bitcoin, making both systems more stable, secure, and capital-efficient.</p>
-                        <p class="text-lg mb-4">We provide essential risk management infrastructure for every participant in the bitcoin ecosystem through bitcoin-native insurance technology.</p>
-                        <p class="text-lg font-medium">Discover what you can do with Resolvr.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-medium mb-4">What Sets Us Apart</h4>
-                        <ul class="list-disc list-outside space-y-3 text-lg list-orange-bullets pl-5">
-                            <li>Bitcoin-denominated insurance infrastructure</li>
-                            <li>Real-time, cross-border payments and settlements</li>
-                            <li>Automated premium allocation and distribution</li>
-                            <li>Tokenized insurance products on bitcoin rails</li>
-                            <li>Backed by leading bitcoin-focused venture capital</li>
-                        </ul>
+                    <div class="text-center mt-12">
+                        <a
+                            href="https://www.resolvr.io"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-block bg-white text-accent-orange border-2 border-accent-orange font-medium py-4 px-8 rounded-md text-lg hover:bg-orange-50 transition-colors"
+                            >Learn more at resolvr.io</a
+                        >
                     </div>
                 </div>
-                <div class="text-center mt-12">
-                    <a href="https://www.resolvr.io" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-accent-orange border-2 border-accent-orange font-medium py-4 px-8 rounded-md text-lg hover:bg-orange-50 transition-colors">Learn more at resolvr.io</a>
-                </div>
+            </section>
+        </main>
+
+        <footer
+            class="fixed-bg-container text-center pt-24 pb-4 md:pt-32 md:pb-6 text-white text-sm"
+        >
+            <video
+                autoplay
+                muted
+                loop
+                playsinline
+                class="fixed-bg-video"
+                aria-hidden="true"
+                poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg"
+            >
+                <source
+                    src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.mp4"
+                    type="video/mp4"
+                />
+            </video>
+            <div
+                class="fixed-bg-video"
+                style="
+                    background: linear-gradient(
+                        to bottom,
+                        transparent 95%,
+                        rgba(0, 0, 0, 0.8) 100%
+                    );
+                    pointer-events: none;
+                "
+            ></div>
+            <div class="fixed-bg-content">
+                <img
+                    src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg"
+                    alt="Resolvr Logo"
+                    class="mx-auto mb-4"
+                    style="
+                        width: 121px;
+                        height: auto;
+                        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+                    "
+                />
+                <p>© 2026 Resolvr, Inc.</p>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <footer class="fixed-bg-container text-center pt-24 pb-4 md:pt-32 md:pb-6 text-white text-sm">
-        <video autoplay muted loop playsinline class="fixed-bg-video" aria-hidden="true" poster="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.jpg">
-            <source src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/backgrounds/bdic/stars-timelapse.mp4" type="video/mp4">
-        </video>
-        <div class="fixed-bg-video" style="background: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.8) 100%); pointer-events: none;"></div>
-        <div class="fixed-bg-content">
-            <img src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg" alt="Resolvr Logo" class="mx-auto mb-4" style="width: 121px; height: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));">
-            <p>© 2025 Resolvr, Inc.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Chart Animation ---
-            const chartCanvas = document.getElementById('revenueChart');
-            if (chartCanvas) {
-                const isMobile = window.innerWidth < 768;
-                const ctx = chartCanvas.getContext('2d');
-                const chartConfig = {
-                    type: 'bar',
-                    data: {
-                        labels: isMobile ? ['Year 1', ['Year 2', '(Projected)']] : ['Year 1', 'Year 2 (Projected)'],
-                        datasets: [{
-                            label: 'Fee (USD)',
-                            data: [316250, 357500],
-                            backgroundColor: 'rgba(20, 175, 254, 0.7)',
-                            borderColor: 'rgba(20, 175, 254, 1)',
-                            borderWidth: 2,
-                            borderRadius: 6,
-                            yAxisID: 'y-usd',
-                            order: 2
-                        }, {
-                            label: 'Fee (BTC)',
-                            data: [2.875, 3.25],
-                            type: 'line',
-                            borderColor: '#FB923C',
-                            backgroundColor: '#FB923C',
-                            borderWidth: 3,
-                            pointRadius: 6,
-                            pointBackgroundColor: '#FB923C',
-                            yAxisID: 'y-btc',
-                            order: 1,
-                            tension: 0.1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        layout: {
-                            padding: isMobile ? { top: 5, right: 0, left: 0, bottom: 0 } : { top: 10, right: 10, left: 10, bottom: 5 }
-                        },
-                        scales: {
-                            'y-usd': {
-                                beginAtZero: true,
-                                type: 'linear',
-                                position: 'left',
-                                title: {
-                                    display: true,
-                                    text: 'Annual Fee (USD)',
-                                    font: { size: isMobile ? 11 : 14, family: 'Satoshi', weight: '500'},
-                                    color: '#4b5563',
-                                    padding: { bottom: 5 }
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // --- Chart Animation ---
+                const chartCanvas = document.getElementById("revenueChart");
+                if (chartCanvas) {
+                    const isMobile = window.innerWidth < 768;
+                    const ctx = chartCanvas.getContext("2d");
+                    const chartConfig = {
+                        type: "bar",
+                        data: {
+                            labels: isMobile
+                                ? ["Year 1", ["Year 2", "(Projected)"]]
+                                : ["Year 1", "Year 2 (Projected)"],
+                            datasets: [
+                                {
+                                    label: "Fee (USD)",
+                                    data: [316250, 357500],
+                                    backgroundColor: "rgba(20, 175, 254, 0.7)",
+                                    borderColor: "rgba(20, 175, 254, 1)",
+                                    borderWidth: 2,
+                                    borderRadius: 6,
+                                    yAxisID: "y-usd",
+                                    order: 2,
                                 },
-                                ticks: {
-                                    callback: function(value) {
-                                        if (isMobile && value > 999) {
-                                            return '$' + (value / 1000) + 'k';
-                                        }
-                                        return '$' + new Intl.NumberFormat().format(value);
+                                {
+                                    label: "Fee (BTC)",
+                                    data: [2.875, 3.25],
+                                    type: "line",
+                                    borderColor: "#FB923C",
+                                    backgroundColor: "#FB923C",
+                                    borderWidth: 3,
+                                    pointRadius: 6,
+                                    pointBackgroundColor: "#FB923C",
+                                    yAxisID: "y-btc",
+                                    order: 1,
+                                    tension: 0.1,
+                                },
+                            ],
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            layout: {
+                                padding: isMobile
+                                    ? { top: 5, right: 0, left: 0, bottom: 0 }
+                                    : {
+                                          top: 10,
+                                          right: 10,
+                                          left: 10,
+                                          bottom: 5,
+                                      },
+                            },
+                            scales: {
+                                "y-usd": {
+                                    beginAtZero: true,
+                                    type: "linear",
+                                    position: "left",
+                                    title: {
+                                        display: true,
+                                        text: "Annual Fee (USD)",
+                                        font: {
+                                            size: isMobile ? 11 : 14,
+                                            family: "Satoshi",
+                                            weight: "500",
+                                        },
+                                        color: "#4b5563",
+                                        padding: { bottom: 5 },
                                     },
-                                    font: { size: isMobile ? 10 : 12, family: 'Satoshi', weight: '500' },
-                                    color: '#4b5563'
-                                },
-                                grid: { color: '#e5e7eb' }
-                            },
-                            'y-btc': {
-                                beginAtZero: true,
-                                type: 'linear',
-                                position: 'right',
-                                title: {
-                                    display: true,
-                                    text: 'Annual Fee (BTC)',
-                                    font: { size: isMobile ? 11 : 14, family: 'Satoshi', weight: '500'},
-                                    color: '#4b5563',
-                                    padding: { bottom: 5 }
-                                },
-                                ticks: {
-                                    callback: function(value) { return value + ' BTC'; },
-                                    font: { size: isMobile ? 10 : 12, family: 'Satoshi', weight: '500' },
-                                    color: '#4b5563'
-                                },
-                                grid: { drawOnChartArea: false }
-                            },
-                            x: {
-                                ticks: {
-                                    font: { size: isMobile ? 12 : 16, family: 'Satoshi', weight: '500' },
-                                    color: '#1f2937'
-                                },
-                                grid: { display: false }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                                labels: {
-                                    font: { size: isMobile ? 12 : 14, family: 'Satoshi' }
-                                },
-                                onClick: null // Disable clicking legend to hide/show datasets
-                            },
-                            tooltip: {
-                                enabled: true,
-                                backgroundColor: '#000000',
-                                titleFont: { size: 16, family: 'Satoshi', weight: '500' },
-                                bodyFont: { size: 14, family: 'Satoshi' },
-                                padding: 12,
-                                cornerRadius: 6,
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) { label += ': '; }
-                                        if (context.parsed.y !== null) {
-                                            if (context.dataset.yAxisID === 'y-btc') {
-                                                label += context.parsed.y.toFixed(3) + ' BTC';
-                                            } else {
-                                                label += '$' + new Intl.NumberFormat().format(context.parsed.y);
+                                    ticks: {
+                                        callback: function (value) {
+                                            if (isMobile && value > 999) {
+                                                return "$" + value / 1000 + "k";
                                             }
-                                        }
-                                        return label;
-                                    }
+                                            return (
+                                                "$" +
+                                                new Intl.NumberFormat().format(
+                                                    value,
+                                                )
+                                            );
+                                        },
+                                        font: {
+                                            size: isMobile ? 10 : 12,
+                                            family: "Satoshi",
+                                            weight: "500",
+                                        },
+                                        color: "#4b5563",
+                                    },
+                                    grid: { color: "#e5e7eb" },
+                                },
+                                "y-btc": {
+                                    beginAtZero: true,
+                                    type: "linear",
+                                    position: "right",
+                                    title: {
+                                        display: true,
+                                        text: "Annual Fee (BTC)",
+                                        font: {
+                                            size: isMobile ? 11 : 14,
+                                            family: "Satoshi",
+                                            weight: "500",
+                                        },
+                                        color: "#4b5563",
+                                        padding: { bottom: 5 },
+                                    },
+                                    ticks: {
+                                        callback: function (value) {
+                                            return value + " BTC";
+                                        },
+                                        font: {
+                                            size: isMobile ? 10 : 12,
+                                            family: "Satoshi",
+                                            weight: "500",
+                                        },
+                                        color: "#4b5563",
+                                    },
+                                    grid: { drawOnChartArea: false },
+                                },
+                                x: {
+                                    ticks: {
+                                        font: {
+                                            size: isMobile ? 12 : 16,
+                                            family: "Satoshi",
+                                            weight: "500",
+                                        },
+                                        color: "#1f2937",
+                                    },
+                                    grid: { display: false },
+                                },
+                            },
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                    position: "top",
+                                    labels: {
+                                        font: {
+                                            size: isMobile ? 12 : 14,
+                                            family: "Satoshi",
+                                        },
+                                    },
+                                    onClick: null, // Disable clicking legend to hide/show datasets
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    backgroundColor: "#000000",
+                                    titleFont: {
+                                        size: 16,
+                                        family: "Satoshi",
+                                        weight: "500",
+                                    },
+                                    bodyFont: { size: 14, family: "Satoshi" },
+                                    padding: 12,
+                                    cornerRadius: 6,
+                                    callbacks: {
+                                        label: function (context) {
+                                            let label =
+                                                context.dataset.label || "";
+                                            if (label) {
+                                                label += ": ";
+                                            }
+                                            if (context.parsed.y !== null) {
+                                                if (
+                                                    context.dataset.yAxisID ===
+                                                    "y-btc"
+                                                ) {
+                                                    label +=
+                                                        context.parsed.y.toFixed(
+                                                            3,
+                                                        ) + " BTC";
+                                                } else {
+                                                    label +=
+                                                        "$" +
+                                                        new Intl.NumberFormat().format(
+                                                            context.parsed.y,
+                                                        );
+                                                }
+                                            }
+                                            return label;
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    };
+                    const createChart = () => new Chart(ctx, chartConfig);
+                    const chartObserver = new IntersectionObserver(
+                        (entries, observer) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    createChart();
+                                    observer.unobserve(chartCanvas);
                                 }
-                            }
-                        }
-                    }
-                };
-                const createChart = () => new Chart(ctx, chartConfig);
-                const chartObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            createChart();
-                            observer.unobserve(chartCanvas);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                chartObserver.observe(chartCanvas);
-            }
+                            });
+                        },
+                        { threshold: 0.5 },
+                    );
+                    chartObserver.observe(chartCanvas);
+                }
 
-            // --- Scroll Animation for Cards and Steps ---
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            if (animatedElements.length > 0) {
-            const elementObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            elementObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
+                // --- Scroll Animation for Cards and Steps ---
+                const animatedElements =
+                    document.querySelectorAll(".animate-on-scroll");
+                if (animatedElements.length > 0) {
+                    const elementObserver = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("is-visible");
+                                    elementObserver.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.1 },
+                    );
 
-                animatedElements.forEach((el, index) => {
-                    // Stagger the animation by adding a delay
-                    el.style.transitionDelay = `${index * 100}ms`;
-                    elementObserver.observe(el);
-                });
-            }
-        });
-    </script>
-</body>
+                    animatedElements.forEach((el, index) => {
+                        // Stagger the animation by adding a delay
+                        el.style.transitionDelay = `${index * 100}ms`;
+                        elementObserver.observe(el);
+                    });
+                }
+            });
+        </script>
+    </body>
 </html>
