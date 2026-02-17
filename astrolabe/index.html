@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrolabe - Bitcoin Native Yield</title>
+    <link rel="icon" type="image/x-icon" href="https://www.resolvr.io/favicon.ico">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Generate native bitcoin yield. Allocate a portion of your treasury to back the insurance operations of licensed carriers and participate in the profits of the bitcoin insurance market.">
+    <meta name="keywords" content="Bitcoin ILS, Bitcoin yield, Bitcoin-native yield, Bitcoin-denominated insurance, Crypto insurance, Insurance Linked Securities, Astrolabe">
+    <meta name="creator" content="Astrolabe, Inc.">
+    <meta name="publisher" content="Astrolabe, Inc.">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Astrolabe - Bitcoin Native Yield">
+    <meta property="og:description" content="Generate native bitcoin yield. Allocate a portion of your treasury to back the insurance operations of licensed carriers and participate in the profits of the bitcoin insurance market.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Astrolabe">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Astrolabe - Bitcoin Native Yield">
+    <meta name="twitter:description" content="Generate native bitcoin yield. Allocate a portion of your treasury to back the insurance operations of licensed carriers and participate in the profits of the bitcoin insurance market.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap');
+
+        :root {
+            --page-bg: #05070d;
+            --page-fg: #e6efff;
+            --surface-card: #0f1b2d;
+            --surface-soft: #0b1628;
+            --surface-elevated: #0b1628;
+            --text-strong: #e6efff;
+            --text-primary: #dfe9fb;
+            --text-secondary: #8aa0c2;
+            --text-muted: #7f9bbd;
+            --text-subtle: #6f86a8;
+            --text-soft: #c7d6f3;
+            --text-overline: #9fb2cc;
+            --border-default: #1d2b44;
+            --border-strong: #182642;
+            --border-soft: #1b2a44;
+            --border-hover: #2a4166;
+            --accent: #4ea1ff;
+            --accent-strong: #7db3ff;
+            --accent-soft: #102542;
+            --accent-bright: #4ea1ff;
+            --accent-mint: #3ad6c6;
+            --accent-amber: #f6b45f;
+            --shadow-strong: rgba(5, 12, 24, 0.45);
+            --shadow-soft: rgba(8, 15, 30, 0.55);
+            --chart-grid: #23334f;
+            --chart-axis: #7f9bbd;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 400;
+            color: var(--text-primary);
+            background-color: var(--page-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(46, 112, 191, 0.25), transparent 42%),
+                radial-gradient(circle at 80% 10%, rgba(21, 58, 106, 0.35), transparent 38%),
+                radial-gradient(circle at 50% 92%, rgba(8, 28, 58, 0.7), transparent 55%),
+                radial-gradient(rgba(226, 239, 255, 0.1) 1px, transparent 1px);
+            background-size: auto, auto, auto, 140px 140px;
+            background-position: center, center, center, 0 0;
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            color: var(--text-strong);
+        }
+
+        .accent { color: var(--accent); }
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        .border-accent { border-color: var(--accent); }
+
+        .accent-mint { color: var(--accent-mint); }
+        .bg-accent-mint { background-color: var(--accent-mint); }
+        .border-accent-mint { border-color: var(--accent-mint); }
+
+        .accent-amber { color: var(--accent-amber); }
+
+        .surface-card { background-color: var(--surface-card); }
+        .surface-soft { background-color: var(--surface-soft); }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .list-accent-bullets li::marker { color: var(--accent); }
+
+        .astrolabe-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .astrolabe-logo-footer {
+            height: 28px;
+            width: auto;
+        }
+
+        /* Range slider styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--border-default);
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: 2px solid var(--accent-strong);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: 2px solid var(--accent-strong);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div>
+        <header class="py-8 md:py-6 px-8">
+            <nav class="flex items-center justify-between">
+                <a href="#">
+                    <svg class="astrolabe-logo" viewBox="0 0 1920 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#logo-clip)">
+                            <path d="M472.747 311.308H436.908L529.668 57.2725H567.966L661.077 311.308H624.887L602.048 248.063H495.234L472.747 311.308ZM544.425 112.097L505.775 218.208H591.859L552.858 112.097C552.155 109.52 551.335 106.885 550.398 104.191C549.461 101.497 548.875 99.2135 548.641 97.3396C548.173 99.2135 547.587 101.497 546.884 104.191C546.182 106.885 545.362 109.52 544.425 112.097Z" fill="var(--text-strong)"/>
+                            <path d="M675.132 261.425H706.755C706.755 270.092 709.917 276.944 716.242 281.98C722.566 287.016 731.116 289.534 741.891 289.534C753.603 289.534 762.621 287.25 768.946 282.683C775.271 278.115 778.433 271.966 778.433 264.236C778.433 258.614 776.735 253.929 773.338 250.181C769.942 246.434 763.793 243.388 754.891 241.046L724.674 234.019C709.449 230.271 698.146 224.532 690.768 216.802C683.389 209.072 679.7 198.882 679.7 186.233C679.7 175.692 682.452 166.557 687.957 158.827C693.462 151.097 701.074 145.124 710.795 140.908C720.516 136.691 731.701 134.583 744.351 134.583C757 134.583 767.951 136.808 777.203 141.259C786.456 145.71 793.717 151.917 798.988 159.881C804.258 167.845 807.01 177.332 807.245 188.342H775.622C775.388 179.44 772.46 172.53 766.838 167.611C761.216 162.692 753.369 160.233 743.297 160.233C733.224 160.233 725.026 162.458 719.404 166.908C713.782 171.359 710.971 177.449 710.971 185.179C710.971 196.657 719.404 204.504 736.269 208.721L766.486 216.099C781.009 219.379 791.902 224.708 799.163 232.086C806.425 239.465 810.055 249.479 810.055 262.128C810.055 272.903 807.127 282.331 801.271 290.413C795.415 298.494 787.393 304.701 777.203 309.035C767.014 313.368 755.009 315.535 741.188 315.535C721.044 315.535 704.998 310.616 693.052 300.778C681.105 290.94 675.132 277.822 675.132 261.425Z" fill="var(--text-strong)"/>
+                            <path d="M828.327 139.491H928.816V167.249H828.327V139.491ZM895.086 311.308H862.057V85.7441H895.086V311.319V311.308Z" fill="var(--text-strong)"/>
+                            <path d="M1056.71 138.085V168.302H1041.95C1026.26 168.302 1013.9 172.811 1004.89 181.829C995.867 190.848 991.358 203.673 991.358 220.304V311.307H958.33V139.842H989.25L992.061 174.275H988.899C991.241 163.032 996.863 153.838 1005.76 146.693C1014.67 139.549 1025.79 135.977 1039.14 135.977C1042.19 135.977 1045.06 136.152 1047.75 136.504C1050.45 136.855 1053.43 137.382 1056.71 138.085Z" fill="var(--text-strong)"/>
+                            <path d="M1070.06 225.223C1070.06 207.655 1073.93 192.078 1081.66 178.492C1089.39 164.906 1099.99 154.248 1113.46 146.518C1126.93 138.788 1142.33 134.923 1159.66 134.923C1177 134.923 1192.34 138.788 1205.69 146.518C1219.04 154.248 1229.58 164.906 1237.31 178.492C1245.04 192.078 1248.91 207.655 1248.91 225.223C1248.91 242.791 1245.04 258.368 1237.31 271.954C1229.58 285.54 1219.04 296.199 1205.69 303.928C1192.34 311.658 1177 315.523 1159.66 315.523C1142.33 315.523 1126.93 311.658 1113.46 303.928C1099.99 296.199 1089.39 285.54 1081.66 271.954C1073.93 258.368 1070.06 242.791 1070.06 225.223ZM1103.44 225.223C1103.44 237.17 1105.84 247.71 1110.65 256.846C1115.45 265.981 1122.07 273.126 1130.5 278.279C1138.93 283.432 1148.65 286.009 1159.66 286.009C1170.67 286.009 1180.39 283.432 1188.82 278.279C1197.26 273.126 1203.87 265.981 1208.68 256.846C1213.48 247.71 1215.88 237.17 1215.88 225.223C1215.88 213.277 1213.48 202.443 1208.68 193.425C1203.87 184.406 1197.26 177.321 1188.82 172.167C1180.39 167.014 1170.67 164.437 1159.66 164.437C1148.65 164.437 1138.93 167.014 1130.5 172.167C1122.07 177.321 1115.45 184.406 1110.65 193.425C1105.84 202.443 1103.44 213.043 1103.44 225.223Z" fill="var(--text-strong)"/>
+                            <path d="M1319.18 311.307H1286.15V52.7158H1319.18V311.319V311.307Z" fill="var(--text-strong)"/>
+                            <path d="M1417.9 315.524C1399.63 315.524 1385.28 310.722 1374.86 301.118C1364.44 291.514 1359.22 278.982 1359.22 263.523C1359.22 248.063 1364.85 235.238 1376.09 225.751C1387.33 216.264 1403.03 210.701 1423.17 209.061L1477.28 204.845V199.926C1477.28 190.322 1475.53 182.65 1472.01 176.912C1468.5 171.173 1463.7 167.073 1457.61 164.614C1451.52 162.154 1444.61 160.924 1436.88 160.924C1423.05 160.924 1412.34 163.794 1404.73 169.533C1397.11 175.272 1393.31 183.412 1393.31 193.953H1364.49C1364.49 182.006 1367.54 171.582 1373.63 162.681C1379.72 153.78 1388.33 146.87 1399.46 141.951C1410.58 137.032 1423.52 134.572 1438.28 134.572C1453.04 134.572 1465.04 137.09 1475.7 142.127C1486.36 147.163 1494.67 154.776 1500.65 164.965C1506.62 175.155 1509.61 187.979 1509.61 203.439V311.308H1481.5L1477.98 283.55C1473.53 293.388 1465.86 301.177 1454.97 306.916C1444.08 312.655 1431.72 315.524 1417.9 315.524ZM1427.39 289.886C1443.08 289.886 1455.38 285.143 1464.28 275.656C1473.18 266.169 1477.63 253.345 1477.63 237.182V228.047L1433.71 231.56C1419.19 232.966 1408.71 236.362 1402.27 241.75C1395.82 247.137 1392.6 254.047 1392.6 262.48C1392.6 271.616 1395.71 278.467 1401.91 283.035C1408.12 287.603 1416.61 289.886 1427.39 289.886Z" fill="var(--text-strong)"/>
+                            <path d="M1585.15 311.307H1555.28V52.7158H1588.31V169.017C1593.93 157.773 1602.25 149.224 1613.26 143.368C1624.27 137.511 1636.8 134.583 1650.86 134.583C1667.25 134.583 1681.31 138.507 1693.02 146.354C1704.73 154.201 1713.75 165.035 1720.07 178.855C1726.4 192.675 1729.56 208.487 1729.56 226.289C1729.56 244.092 1726.28 258.732 1719.72 272.318C1713.16 285.904 1703.85 296.503 1691.79 304.116C1679.73 311.729 1665.38 315.535 1648.75 315.535C1635.4 315.535 1623.27 312.49 1612.38 306.4C1601.49 300.31 1593.23 291.526 1587.61 280.048L1585.15 311.319V311.307ZM1588.66 224.884C1588.66 236.83 1590.83 247.371 1595.16 256.506C1599.5 265.642 1605.71 272.786 1613.79 277.94C1621.87 283.093 1631.53 285.67 1642.77 285.67C1654.02 285.67 1663.62 283.093 1671.59 277.94C1679.55 272.786 1685.7 265.642 1690.03 256.506C1694.37 247.371 1696.53 236.83 1696.53 224.884C1696.53 212.937 1694.37 202.806 1690.03 193.788C1685.7 184.77 1679.55 177.625 1671.59 172.355C1663.62 167.085 1654.02 164.449 1642.77 164.449C1631.53 164.449 1621.87 167.026 1613.79 172.179C1605.71 177.333 1599.5 184.418 1595.16 193.437C1590.83 202.455 1588.66 212.937 1588.66 224.884Z" fill="var(--text-strong)"/>
+                            <path d="M1840.24 315.524C1823.61 315.524 1808.85 311.718 1795.97 304.105C1783.08 296.492 1773.01 285.951 1765.75 272.482C1758.49 259.013 1754.86 243.378 1754.86 225.575C1754.86 207.773 1758.43 191.727 1765.58 178.141C1772.72 164.555 1782.56 153.897 1795.09 146.167C1807.62 138.437 1822.2 134.572 1838.83 134.572C1855.47 134.572 1869.46 138.086 1881.52 145.113C1893.59 152.14 1902.96 161.979 1909.63 174.628C1916.31 187.277 1919.65 202.151 1919.65 219.251V231.548L1772.43 231.9L1773.13 209.764H1886.62C1886.62 195.475 1882.29 183.997 1873.62 175.33C1864.95 166.663 1853.36 162.33 1838.83 162.33C1827.83 162.33 1818.4 164.731 1810.55 169.533C1802.7 174.335 1796.73 181.362 1792.63 190.615C1788.53 199.867 1786.48 210.935 1786.48 223.818C1786.48 244.432 1791.17 260.302 1800.54 271.428C1809.91 282.555 1823.37 288.118 1840.94 288.118C1853.83 288.118 1864.37 285.541 1872.57 280.388C1880.76 275.235 1886.27 267.739 1889.08 257.901H1920C1915.78 276.172 1906.76 290.343 1892.94 300.416C1879.12 310.488 1861.56 315.524 1840.24 315.524Z" fill="var(--text-strong)"/>
+                            <path d="M159.803 145.732C147.866 145.732 138.168 136.023 138.168 124.098C138.168 120.697 135.389 117.918 131.989 117.918C128.588 117.918 125.809 120.697 125.809 124.098C125.809 136.035 116.1 145.732 104.175 145.732C100.774 145.732 97.9949 148.511 97.9949 151.912C97.9949 155.312 100.774 158.092 104.175 158.092C116.112 158.092 125.809 167.801 125.809 179.726C125.809 183.127 128.588 185.906 131.989 185.906C135.389 185.906 138.168 183.127 138.168 179.726C138.168 167.789 147.878 158.092 159.803 158.092C163.204 158.092 165.983 155.312 165.983 151.912C165.983 148.511 163.204 145.732 159.803 145.732Z" fill="var(--text-strong)"/>
+                            <path d="M295.825 145.732C283.888 145.732 274.191 136.023 274.191 124.098C274.191 120.697 271.412 117.918 268.011 117.918C264.611 117.918 261.832 120.697 261.832 124.098C261.832 136.035 252.122 145.732 240.197 145.732C236.796 145.732 234.017 148.511 234.017 151.912C234.017 155.312 236.796 158.092 240.197 158.092C252.134 158.092 261.832 167.801 261.832 179.726C261.832 183.127 264.611 185.906 268.011 185.906C271.412 185.906 274.191 183.127 274.191 179.726C274.191 167.789 283.9 158.092 295.825 158.092C299.226 158.092 302.005 155.312 302.005 151.912C302.005 148.511 299.226 145.732 295.825 145.732Z" fill="var(--text-strong)"/>
+                            <path d="M227.814 77.7205C215.877 77.7205 206.18 68.0113 206.18 56.0859C206.18 52.6853 203.401 49.9062 200 49.9062C196.599 49.9062 193.82 52.6853 193.82 56.0859C193.82 68.023 184.111 77.7205 172.186 77.7205C168.785 77.7205 166.006 80.4996 166.006 83.9002C166.006 87.3007 168.785 90.0798 172.186 90.0798C184.123 90.0798 193.82 99.789 193.82 111.714C193.82 115.115 196.599 117.894 200 117.894C203.401 117.894 206.18 115.115 206.18 111.714C206.18 99.7773 215.889 90.0798 227.814 90.0798C231.215 90.0798 233.994 87.3007 233.994 83.9002C233.994 80.4996 231.215 77.7205 227.814 77.7205Z" fill="var(--text-strong)"/>
+                            <path d="M200 0C89.5403 0 0 89.5403 0 200C0 310.46 89.5403 400 200 400C310.46 400 400 310.46 400 200C400 89.5403 310.448 0 200 0ZM187.242 366.475C152.099 363.825 120.005 350.281 94.3011 329.233C114.986 298.663 148.569 277.545 187.242 273.698V366.475ZM187.242 254.01C142.835 257.821 104.081 281.356 79.7373 315.807C73.4053 309.228 67.6008 302.134 62.4062 294.583C91.6628 256.449 136.409 230.84 187.242 227.146V254.01ZM212.746 366.475V273.698C251.419 277.533 285.014 298.663 305.687 329.233C279.984 350.281 247.878 363.813 212.746 366.475ZM320.251 315.807C295.908 281.356 257.153 257.821 212.746 254.01V227.146C263.579 230.84 308.326 256.449 337.582 294.583C332.387 302.122 326.583 309.228 320.251 315.807ZM200 200C139.306 200 84.932 227.04 48.2645 269.723C38.4967 248.499 33.0441 224.894 33.0441 200C33.0441 107.786 107.798 33.0441 200 33.0441C292.202 33.0441 366.956 107.798 366.956 200C366.956 224.894 361.503 248.499 351.735 269.723C315.056 227.04 260.682 200 200 200Z" fill="var(--text-strong)"/>
+                        </g>
+                        <defs>
+                            <clipPath id="logo-clip">
+                                <rect width="1920" height="399.511" fill="white"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+                <div>
+                    <a href="https://www.resolvr.io/treasuries/inquiry" target="_blank" rel="noopener noreferrer" class="font-medium py-3 px-6 rounded-md text-lg hover:opacity-90 transition-opacity" style="background-color: var(--accent); color: var(--page-bg);">Schedule a Call</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="w-full">
+            <!-- Hero -->
+            <section class="py-24 px-6" style="background-color: rgba(5, 7, 13, 0.85);">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-6xl md:text-7xl leading-tight mb-6 text-left" style="color: var(--text-strong);">Generate a sustainable bitcoin yield flow.</h1>
+                    <div class="flex flex-col">
+                        <p class="text-lg md:text-xl text-left" style="color: var(--text-soft);">
+                            Allocate a portion of your treasury to back the insurance operations of licensed carriers. Participate in the profits of the bitcoin insurance market and earn a sustainable, transparent yield on your bitcoin.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full h-32"></section>
+
+            <!-- Benefits -->
+            <section id="benefits" class="py-20 px-6" style="background-color: var(--surface-soft);">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl mb-3">The Investor Advantage: Why Allocate to Astrolabe ILS?</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="animate-on-scroll p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <h3 class="text-2xl mb-3">Uncorrelated Returns</h3>
+                            <p style="color: var(--text-secondary);">Escape crypto market volatility. ILS returns are driven by natural events and standard insurance risk, which have zero correlation to bitcoin price action or DeFi lending cycles.</p>
+                        </div>
+                        <div class="animate-on-scroll p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <h3 class="text-2xl mb-3">Real-World Yield</h3>
+                            <p style="color: var(--text-secondary);">Earn yield derived from actual insurance premiums. This is a share of the profitable global reinsurance market, not inflationary token rewards.</p>
+                        </div>
+                        <div class="animate-on-scroll p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <h3 class="text-2xl mb-3">Bitcoin-Native</h3>
+                            <p style="color: var(--text-secondary);">Invest bitcoin and receive the coupon and principal in bitcoin. Your capital stays in the asset you believe in, while working to generate more of it.</p>
+                        </div>
+                        <div class="animate-on-scroll p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <h3 class="text-2xl mb-3">Radical Transparency</h3>
+                            <p style="color: var(--text-secondary);">Unlike traditional reinsurance funds, Astrolabe ILS utilizes on-chain covenants. You can cryptographically verify that your collateral is held in the correct reserve address at all times.</p>
+                        </div>
+                        <div class="animate-on-scroll p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <h3 class="text-2xl mb-3">Atomic Liquidity</h3>
+                            <p style="color: var(--text-secondary);">Tokenized ILS notes can be traded on secondary markets or peer-to-peer using atomic swaps, offering superior liquidity to traditional multi-year reinsurance contracts.</p>
+                        </div>
+                        <div class="animate-on-scroll p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <h3 class="text-2xl mb-3">Automated "Smart" Payouts</h3>
+                            <p style="color: var(--text-secondary);">Our platform uses Simplicity smart contracts and independent oracles to automate the payment waterfall. When a premium is paid, you get your share instantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section id="how-it-works" class="py-20 px-6" style="background-color: var(--surface-card);">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl mb-3">A Frictionless Investment Journey</h2>
+                        <p class="text-lg" style="color: var(--text-secondary);">We guide you from idle capital to active yield with clarity and ease.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                        <div class="animate-on-scroll">
+                            <div class="h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: var(--accent-mint); color: var(--page-bg); border: 2px solid var(--accent-mint);">1</div>
+                            <h3 class="text-xl mb-2">Discover & Analyze</h3>
+                            <p class="px-4" style="color: var(--text-secondary);">Find available risk tranches on regulated platforms. Review the prospectus, expected loss models, and yield targets.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                            <div class="h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: var(--accent-mint); color: var(--page-bg); border: 2px solid var(--accent-mint);">2</div>
+                            <h3 class="text-xl mb-2">Atomic Investment</h3>
+                            <p class="px-4" style="color: var(--text-secondary);">Select your allocation and perform a single, atomic transaction swapping L-BTC for the specific ILS Token.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                            <div class="h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: var(--accent-mint); color: var(--page-bg); border: 2px solid var(--accent-mint);">3</div>
+                            <h3 class="text-xl mb-2">Automated Yield</h3>
+                            <p class="px-4" style="color: var(--text-secondary);">Premiums collected from the insurance sponsor are automatically routed to your wallet as coupon payments.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                            <div class="h-16 w-16 text-2xl rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: var(--accent-mint); color: var(--page-bg); border: 2px solid var(--accent-mint);">4</div>
+                            <h3 class="text-xl mb-2">Redeem or Trade</h3>
+                            <p class="px-4" style="color: var(--text-secondary);">At maturity, the principal is unlocked and returned. Need liquidity sooner? Swap your ILS token on the secondary market.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Yield Calculator -->
+            <section id="yield-model" class="py-20 px-6" style="background-color: var(--surface-soft);">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="text-left mb-12">
+                            <h2 class="text-4xl mb-3">Put your treasury to work.</h2>
+                            <p class="text-lg" style="color: var(--text-secondary);">See the compounding potential of allocating a portion of your idle bitcoin holdings to a diversified ILS portfolio.</p>
+                        </div>
+                        <div class="p-8 rounded-lg shadow-lg" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                            <label class="block text-sm font-medium mb-2" style="color: var(--text-soft);">Treasury Allocation (BTC)</label>
+                            <div class="relative mt-2 rounded-md shadow-sm">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <span style="color: var(--text-muted);" class="sm:text-sm">&#8383;</span>
+                                </div>
+                                <input type="number" id="btcInput" value="100" max="1000000" class="block w-full rounded-md py-3 pl-8 pr-4 sm:text-lg sm:leading-6" style="background-color: var(--surface-soft); color: var(--text-strong); border: 1px solid var(--border-default);" placeholder="0.00">
+                            </div>
+
+                            <div class="mt-6">
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-soft);">Target Yield (APY)</label>
+                                <input type="range" id="apyInput" min="4" max="15" value="8.5" step="0.5" class="w-full">
+                                <div class="flex justify-between text-xs mt-2" style="color: var(--text-muted);">
+                                    <span>4% (Low Risk)</span>
+                                    <span id="apyValue" class="font-bold text-base" style="color: var(--accent);">8.5%</span>
+                                    <span>15% (High Risk)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl p-8 shadow-2xl" style="background-color: var(--surface-card); border: 1px solid var(--border-default);">
+                        <h3 class="text-lg font-semibold mb-6" style="color: var(--text-strong);">1-Year Projected Performance</h3>
+
+                        <div class="relative h-64 w-full">
+                            <canvas id="yieldChart"></canvas>
+                        </div>
+
+                        <div class="mt-8 grid grid-cols-2 gap-4 text-center">
+                            <div class="p-4 rounded-xl" style="background-color: var(--surface-soft);">
+                                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Yield Generated</p>
+                                <p class="text-2xl font-bold mt-1" style="color: var(--accent);" id="yieldResult">+8.50 BTC</p>
+                            </div>
+                            <div class="p-4 rounded-xl" style="background-color: var(--surface-soft);">
+                                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Total Position</p>
+                                <p class="text-2xl font-bold mt-1" style="color: var(--text-strong);" id="totalResult">108.50 BTC</p>
+                            </div>
+                        </div>
+                        <p class="text-xs mt-4 text-center italic" style="color: var(--text-subtle);">*Projections are estimates based on historic ILS market performance. Past performance is not indicative of future results.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="text-center py-20 px-6" style="background-color: var(--surface-card);">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl mb-4">Become an Astrolabe Treasury Partner</h2>
+                    <p class="text-lg mb-8" style="color: var(--text-secondary);">Ready to professionalize your bitcoin treasury and access the $40T reinsurance market?</p>
+                    <a href="https://www.resolvr.io/treasuries/inquiry" target="_blank" rel="noopener noreferrer" class="font-medium py-4 px-8 rounded-md text-lg hover:opacity-90 transition-opacity" style="background-color: var(--accent); color: var(--page-bg);">Schedule a Call</a>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section id="faq" class="py-20 px-6" style="background-color: var(--surface-soft);">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl mb-4 text-center" style="color: var(--text-strong);">Frequently Asked Questions</h2>
+                    <p class="text-lg mb-12 text-center" style="color: var(--text-secondary);">Everything you need to know about investing in Astrolabe ILS</p>
+
+                    <div class="space-y-4">
+                        <!-- The Fundamentals -->
+                        <div class="faq-category mb-8">
+                            <h3 class="text-2xl mb-4" style="color: var(--accent);">The Fundamentals</h3>
+
+                            <div class="faq-item rounded-lg overflow-hidden" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">Where does my bitcoin go if I buy an ILS? (AKA "Who's holding my bitcoin"?)</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>Unlike traditional reinsurance where capital is wired to a trustee-managed bank account, your bitcoin is held in a smart contract on the Liquid Network. Specifically, the funds are locked in a programmatic escrow enforced by <strong>SimplicityHL</strong> code. The capital is strictly bound by the contract's logic: it can <em>only</em> be moved to the investor (upon maturity/redemption) or to the cedent (if a verified disaster occurs). This eliminates the need for a central custodian to hold the funds, offering near-zero counterparty risk regarding the safety of the collateral.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item rounded-lg overflow-hidden mt-4" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">Where does the yield come from?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>The yield is derived entirely from insurance premiums, not from crypto-lending, staking, or inflationary token emissions. Global insurers and corporations pay significant premiums to transfer the risk of catastrophic events (like hurricanes or earthquakes) to the capital markets. As an investor, you are acting as the reinsurer. You provide the collateral to back these risks, and in exchange, you receive the premiums paid by the coverage buyer. This results in a yield that is structurally uncorrelated to bitcoin price action or interest rates.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item rounded-lg overflow-hidden mt-4" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">Is the yield paid in bitcoin or fiat?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>The product is bitcoin-native. You invest in L-BTC (Liquid Bitcoin), and both the coupons (premiums) and the principal repayment are denominated and settled in L-BTC. This allows you to eliminate currency risk and keep your capital in the asset you believe in.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Access & Eligibility -->
+                        <div class="faq-category mb-8">
+                            <h3 class="text-2xl mb-4" style="color: var(--accent);">Access & Eligibility</h3>
+
+                            <div class="faq-item rounded-lg overflow-hidden" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">Who can invest in these securities?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>Due to the regulatory nature of securities and insurance, this product is available only to accredited and institutional investors who have been whitelisted by Astrolabe. While the ILS is unilaterally redeemable for L-BTC upon maturity, the <strong>issuance and movement of the ILS before then is gated and permissioned by Astrolabe</strong>. You must undergo a standard KYC/AML process to be authorized to participate in the primary issuance or secondary trades.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technology & Security -->
+                        <div class="faq-category mb-8">
+                            <h3 class="text-2xl mb-4" style="color: var(--accent);">Technology & Security</h3>
+
+                            <div class="faq-item rounded-lg overflow-hidden" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">How is this different from other smart contract platforms (e.g., Ethereum/Solidity)?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>Astrolabe ILS is built on the Liquid Network, a Bitcoin sidechain, using SimplicityHL (High-Level Simplicity). This differs from EVM-based platforms (like Ethereum) in two critical ways:</p>
+                                        <ol class="list-decimal list-outside pl-5 mt-2 space-y-2">
+                                            <li><strong>Safety & Auditability:</strong> Simplicity is designed to be formally verifiable, significantly reducing the risk of bugs, hacks, or "rug pulls" common in Solidity-based contracts.</li>
+                                            <li><strong>bitcoin-Native Architecture:</strong> The contract uses a UTXO-based model (similar to Bitcoin) rather than an Account model. This allows for precise state management where the token supply and the backing collateral are mathematically linked and move in lockstep, ensuring the token supply always matches the backing collateral.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item rounded-lg overflow-hidden mt-4" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">How is a payout triggered?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>Payouts are not decided by a human claims adjuster but are automated via an Oracle. The specific conditions (e.g., "Wind speed > 130mph in Florida") are pre-coded into the Note. A designated "Claim Oracle" (a trusted third party or federation) broadcasts signed data to the network. If the data confirms a trigger event occurred within the coverage window, the Simplicity smart contract automatically permits the Claim Payout transaction, moving collateral to the insurer. This makes the payout unstoppable and self-enforcing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Risk Profile -->
+                        <div class="faq-category mb-8">
+                            <h3 class="text-2xl mb-4" style="color: var(--accent);">Risk Profile</h3>
+
+                            <div class="faq-item rounded-lg overflow-hidden" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">What are the risks involved?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>While we eliminate financial counterparty risk through full collateralization, this is a risk-bearing investment. The primary risks are:</p>
+                                        <ul class="list-disc list-outside pl-5 mt-2 space-y-2">
+                                            <li><strong>Principal Loss (Insurance Risk):</strong> If the defined catastrophe occurs (e.g., a major hurricane), the smart contract will liquidate your collateral to pay the insurer. You could lose some or all of your principal.</li>
+                                            <li><strong>Liquidity Risk:</strong> While we offer secondary market trading via atomic swaps, market liquidity is not guaranteed. You may need to hold the token until maturity.</li>
+                                            <li><strong>Model Risk:</strong> The premiums are priced based on catastrophe models. These models are probabilistic and may not perfectly predict the frequency or severity of future weather events.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item rounded-lg overflow-hidden mt-4" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">What happens if Astrolabe goes out of business?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>Your assets are safe. Because the arrangement is structured as a decentralized smart contract on the Liquid blockchain, the custody of funds is not dependent on Astrolabe's continued existence. The Redemption path is hard-coded to allow token holders to burn their tokens and reclaim their bitcoin collateral after the Expiry Date, regardless of Astrolabe's operational status.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Liquidity -->
+                        <div class="faq-category mb-8">
+                            <h3 class="text-2xl mb-4" style="color: var(--accent);">Liquidity</h3>
+
+                            <div class="faq-item rounded-lg overflow-hidden" style="border: 1px solid var(--border-default);">
+                                <button class="faq-question w-full text-left px-6 py-4 transition-colors flex justify-between items-center" style="background-color: var(--surface-card);" onmouseover="this.style.backgroundColor='#132038'" onmouseout="this.style.backgroundColor='var(--surface-card)'">
+                                    <span class="font-medium text-lg" style="color: var(--text-strong);">Can I sell my position before the bond matures?</span>
+                                    <svg class="faq-icon w-6 h-6 transition-transform" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                                    <div class="px-6 py-4" style="color: var(--text-secondary);">
+                                        <p>Yes. Unlike traditional private reinsurance contracts which are illiquid, the ILS is issued as a token on the Liquid Network. This enables peer-to-peer trading. You can sell your position to another whitelisted investor using an atomic swap, a single, instantaneous transaction where the ILS token and the bitcoin payment are exchanged simultaneously. This eliminates settlement delays and settlement risk.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="py-20 px-6" style="background-color: var(--surface-card);">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl mb-12 text-center" style="color: var(--text-strong);">About Astrolabe</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                        <div class="text-left">
+                            <p class="text-lg mb-4" style="color: var(--text-secondary);">Astrolabe is bridging the global insurance market to bitcoin, making both systems more stable, secure, and capital-efficient.</p>
+                            <p class="text-lg mb-4" style="color: var(--text-secondary);">We provide essential risk management infrastructure for every participant in the bitcoin ecosystem through bitcoin-native insurance technology.</p>
+                            <p class="text-lg font-medium" style="color: var(--text-soft);">Discover what you can do with Astrolabe.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-medium mb-4" style="color: var(--text-strong);">What Sets Us Apart</h4>
+                            <ul class="list-disc list-outside space-y-3 text-lg list-accent-bullets pl-5" style="color: var(--text-secondary);">
+                                <li>Bitcoin-denominated insurance infrastructure</li>
+                                <li>Real-time, cross-border payments and settlements</li>
+                                <li>Automated premium allocation and distribution</li>
+                                <li>Tokenized insurance products on bitcoin rails</li>
+                                <li>Backed by leading bitcoin-focused venture capital</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="https://www.resolvr.io" target="_blank" rel="noopener noreferrer" class="inline-block font-medium py-4 px-8 rounded-md text-lg transition-colors" style="background-color: transparent; color: var(--accent); border: 2px solid var(--accent);" onmouseover="this.style.backgroundColor='var(--accent-soft)'" onmouseout="this.style.backgroundColor='transparent'">Learn more at resolvr.io</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center pt-20 pb-8 text-sm" style="color: var(--text-muted); background-color: var(--page-bg);">
+            <svg class="astrolabe-logo-footer mx-auto mb-4" viewBox="0 0 1920 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#footer-logo-clip)">
+                    <path d="M472.747 311.308H436.908L529.668 57.2725H567.966L661.077 311.308H624.887L602.048 248.063H495.234L472.747 311.308ZM544.425 112.097L505.775 218.208H591.859L552.858 112.097C552.155 109.52 551.335 106.885 550.398 104.191C549.461 101.497 548.875 99.2135 548.641 97.3396C548.173 99.2135 547.587 101.497 546.884 104.191C546.182 106.885 545.362 109.52 544.425 112.097Z" fill="var(--text-muted)"/>
+                    <path d="M675.132 261.425H706.755C706.755 270.092 709.917 276.944 716.242 281.98C722.566 287.016 731.116 289.534 741.891 289.534C753.603 289.534 762.621 287.25 768.946 282.683C775.271 278.115 778.433 271.966 778.433 264.236C778.433 258.614 776.735 253.929 773.338 250.181C769.942 246.434 763.793 243.388 754.891 241.046L724.674 234.019C709.449 230.271 698.146 224.532 690.768 216.802C683.389 209.072 679.7 198.882 679.7 186.233C679.7 175.692 682.452 166.557 687.957 158.827C693.462 151.097 701.074 145.124 710.795 140.908C720.516 136.691 731.701 134.583 744.351 134.583C757 134.583 767.951 136.808 777.203 141.259C786.456 145.71 793.717 151.917 798.988 159.881C804.258 167.845 807.01 177.332 807.245 188.342H775.622C775.388 179.44 772.46 172.53 766.838 167.611C761.216 162.692 753.369 160.233 743.297 160.233C733.224 160.233 725.026 162.458 719.404 166.908C713.782 171.359 710.971 177.449 710.971 185.179C710.971 196.657 719.404 204.504 736.269 208.721L766.486 216.099C781.009 219.379 791.902 224.708 799.163 232.086C806.425 239.465 810.055 249.479 810.055 262.128C810.055 272.903 807.127 282.331 801.271 290.413C795.415 298.494 787.393 304.701 777.203 309.035C767.014 313.368 755.009 315.535 741.188 315.535C721.044 315.535 704.998 310.616 693.052 300.778C681.105 290.94 675.132 277.822 675.132 261.425Z" fill="var(--text-muted)"/>
+                    <path d="M828.327 139.491H928.816V167.249H828.327V139.491ZM895.086 311.308H862.057V85.7441H895.086V311.319V311.308Z" fill="var(--text-muted)"/>
+                    <path d="M1056.71 138.085V168.302H1041.95C1026.26 168.302 1013.9 172.811 1004.89 181.829C995.867 190.848 991.358 203.673 991.358 220.304V311.307H958.33V139.842H989.25L992.061 174.275H988.899C991.241 163.032 996.863 153.838 1005.76 146.693C1014.67 139.549 1025.79 135.977 1039.14 135.977C1042.19 135.977 1045.06 136.152 1047.75 136.504C1050.45 136.855 1053.43 137.382 1056.71 138.085Z" fill="var(--text-muted)"/>
+                    <path d="M1070.06 225.223C1070.06 207.655 1073.93 192.078 1081.66 178.492C1089.39 164.906 1099.99 154.248 1113.46 146.518C1126.93 138.788 1142.33 134.923 1159.66 134.923C1177 134.923 1192.34 138.788 1205.69 146.518C1219.04 154.248 1229.58 164.906 1237.31 178.492C1245.04 192.078 1248.91 207.655 1248.91 225.223C1248.91 242.791 1245.04 258.368 1237.31 271.954C1229.58 285.54 1219.04 296.199 1205.69 303.928C1192.34 311.658 1177 315.523 1159.66 315.523C1142.33 315.523 1126.93 311.658 1113.46 303.928C1099.99 296.199 1089.39 285.54 1081.66 271.954C1073.93 258.368 1070.06 242.791 1070.06 225.223ZM1103.44 225.223C1103.44 237.17 1105.84 247.71 1110.65 256.846C1115.45 265.981 1122.07 273.126 1130.5 278.279C1138.93 283.432 1148.65 286.009 1159.66 286.009C1170.67 286.009 1180.39 283.432 1188.82 278.279C1197.26 273.126 1203.87 265.981 1208.68 256.846C1213.48 247.71 1215.88 237.17 1215.88 225.223C1215.88 213.277 1213.48 202.443 1208.68 193.425C1203.87 184.406 1197.26 177.321 1188.82 172.167C1180.39 167.014 1170.67 164.437 1159.66 164.437C1148.65 164.437 1138.93 167.014 1130.5 172.167C1122.07 177.321 1115.45 184.406 1110.65 193.425C1105.84 202.443 1103.44 213.043 1103.44 225.223Z" fill="var(--text-muted)"/>
+                    <path d="M1319.18 311.307H1286.15V52.7158H1319.18V311.319V311.307Z" fill="var(--text-muted)"/>
+                    <path d="M1417.9 315.524C1399.63 315.524 1385.28 310.722 1374.86 301.118C1364.44 291.514 1359.22 278.982 1359.22 263.523C1359.22 248.063 1364.85 235.238 1376.09 225.751C1387.33 216.264 1403.03 210.701 1423.17 209.061L1477.28 204.845V199.926C1477.28 190.322 1475.53 182.65 1472.01 176.912C1468.5 171.173 1463.7 167.073 1457.61 164.614C1451.52 162.154 1444.61 160.924 1436.88 160.924C1423.05 160.924 1412.34 163.794 1404.73 169.533C1397.11 175.272 1393.31 183.412 1393.31 193.953H1364.49C1364.49 182.006 1367.54 171.582 1373.63 162.681C1379.72 153.78 1388.33 146.87 1399.46 141.951C1410.58 137.032 1423.52 134.572 1438.28 134.572C1453.04 134.572 1465.04 137.09 1475.7 142.127C1486.36 147.163 1494.67 154.776 1500.65 164.965C1506.62 175.155 1509.61 187.979 1509.61 203.439V311.308H1481.5L1477.98 283.55C1473.53 293.388 1465.86 301.177 1454.97 306.916C1444.08 312.655 1431.72 315.524 1417.9 315.524ZM1427.39 289.886C1443.08 289.886 1455.38 285.143 1464.28 275.656C1473.18 266.169 1477.63 253.345 1477.63 237.182V228.047L1433.71 231.56C1419.19 232.966 1408.71 236.362 1402.27 241.75C1395.82 247.137 1392.6 254.047 1392.6 262.48C1392.6 271.616 1395.71 278.467 1401.91 283.035C1408.12 287.603 1416.61 289.886 1427.39 289.886Z" fill="var(--text-muted)"/>
+                    <path d="M1585.15 311.307H1555.28V52.7158H1588.31V169.017C1593.93 157.773 1602.25 149.224 1613.26 143.368C1624.27 137.511 1636.8 134.583 1650.86 134.583C1667.25 134.583 1681.31 138.507 1693.02 146.354C1704.73 154.201 1713.75 165.035 1720.07 178.855C1726.4 192.675 1729.56 208.487 1729.56 226.289C1729.56 244.092 1726.28 258.732 1719.72 272.318C1713.16 285.904 1703.85 296.503 1691.79 304.116C1679.73 311.729 1665.38 315.535 1648.75 315.535C1635.4 315.535 1623.27 312.49 1612.38 306.4C1601.49 300.31 1593.23 291.526 1587.61 280.048L1585.15 311.319V311.307ZM1588.66 224.884C1588.66 236.83 1590.83 247.371 1595.16 256.506C1599.5 265.642 1605.71 272.786 1613.79 277.94C1621.87 283.093 1631.53 285.67 1642.77 285.67C1654.02 285.67 1663.62 283.093 1671.59 277.94C1679.55 272.786 1685.7 265.642 1690.03 256.506C1694.37 247.371 1696.53 236.83 1696.53 224.884C1696.53 212.937 1694.37 202.806 1690.03 193.788C1685.7 184.77 1679.55 177.625 1671.59 172.355C1663.62 167.085 1654.02 164.449 1642.77 164.449C1631.53 164.449 1621.87 167.026 1613.79 172.179C1605.71 177.333 1599.5 184.418 1595.16 193.437C1590.83 202.455 1588.66 212.937 1588.66 224.884Z" fill="var(--text-muted)"/>
+                    <path d="M1840.24 315.524C1823.61 315.524 1808.85 311.718 1795.97 304.105C1783.08 296.492 1773.01 285.951 1765.75 272.482C1758.49 259.013 1754.86 243.378 1754.86 225.575C1754.86 207.773 1758.43 191.727 1765.58 178.141C1772.72 164.555 1782.56 153.897 1795.09 146.167C1807.62 138.437 1822.2 134.572 1838.83 134.572C1855.47 134.572 1869.46 138.086 1881.52 145.113C1893.59 152.14 1902.96 161.979 1909.63 174.628C1916.31 187.277 1919.65 202.151 1919.65 219.251V231.548L1772.43 231.9L1773.13 209.764H1886.62C1886.62 195.475 1882.29 183.997 1873.62 175.33C1864.95 166.663 1853.36 162.33 1838.83 162.33C1827.83 162.33 1818.4 164.731 1810.55 169.533C1802.7 174.335 1796.73 181.362 1792.63 190.615C1788.53 199.867 1786.48 210.935 1786.48 223.818C1786.48 244.432 1791.17 260.302 1800.54 271.428C1809.91 282.555 1823.37 288.118 1840.94 288.118C1853.83 288.118 1864.37 285.541 1872.57 280.388C1880.76 275.235 1886.27 267.739 1889.08 257.901H1920C1915.78 276.172 1906.76 290.343 1892.94 300.416C1879.12 310.488 1861.56 315.524 1840.24 315.524Z" fill="var(--text-muted)"/>
+                    <path d="M159.803 145.732C147.866 145.732 138.168 136.023 138.168 124.098C138.168 120.697 135.389 117.918 131.989 117.918C128.588 117.918 125.809 120.697 125.809 124.098C125.809 136.035 116.1 145.732 104.175 145.732C100.774 145.732 97.9949 148.511 97.9949 151.912C97.9949 155.312 100.774 158.092 104.175 158.092C116.112 158.092 125.809 167.801 125.809 179.726C125.809 183.127 128.588 185.906 131.989 185.906C135.389 185.906 138.168 183.127 138.168 179.726C138.168 167.789 147.878 158.092 159.803 158.092C163.204 158.092 165.983 155.312 165.983 151.912C165.983 148.511 163.204 145.732 159.803 145.732Z" fill="var(--text-muted)"/>
+                    <path d="M295.825 145.732C283.888 145.732 274.191 136.023 274.191 124.098C274.191 120.697 271.412 117.918 268.011 117.918C264.611 117.918 261.832 120.697 261.832 124.098C261.832 136.035 252.122 145.732 240.197 145.732C236.796 145.732 234.017 148.511 234.017 151.912C234.017 155.312 236.796 158.092 240.197 158.092C252.134 158.092 261.832 167.801 261.832 179.726C261.832 183.127 264.611 185.906 268.011 185.906C271.412 185.906 274.191 183.127 274.191 179.726C274.191 167.789 283.9 158.092 295.825 158.092C299.226 158.092 302.005 155.312 302.005 151.912C302.005 148.511 299.226 145.732 295.825 145.732Z" fill="var(--text-muted)"/>
+                    <path d="M227.814 77.7205C215.877 77.7205 206.18 68.0113 206.18 56.0859C206.18 52.6853 203.401 49.9062 200 49.9062C196.599 49.9062 193.82 52.6853 193.82 56.0859C193.82 68.023 184.111 77.7205 172.186 77.7205C168.785 77.7205 166.006 80.4996 166.006 83.9002C166.006 87.3007 168.785 90.0798 172.186 90.0798C184.123 90.0798 193.82 99.789 193.82 111.714C193.82 115.115 196.599 117.894 200 117.894C203.401 117.894 206.18 115.115 206.18 111.714C206.18 99.7773 215.889 90.0798 227.814 90.0798C231.215 90.0798 233.994 87.3007 233.994 83.9002C233.994 80.4996 231.215 77.7205 227.814 77.7205Z" fill="var(--text-muted)"/>
+                    <path d="M200 0C89.5403 0 0 89.5403 0 200C0 310.46 89.5403 400 200 400C310.46 400 400 310.46 400 200C400 89.5403 310.448 0 200 0ZM187.242 366.475C152.099 363.825 120.005 350.281 94.3011 329.233C114.986 298.663 148.569 277.545 187.242 273.698V366.475ZM187.242 254.01C142.835 257.821 104.081 281.356 79.7373 315.807C73.4053 309.228 67.6008 302.134 62.4062 294.583C91.6628 256.449 136.409 230.84 187.242 227.146V254.01ZM212.746 366.475V273.698C251.419 277.533 285.014 298.663 305.687 329.233C279.984 350.281 247.878 363.813 212.746 366.475ZM320.251 315.807C295.908 281.356 257.153 257.821 212.746 254.01V227.146C263.579 230.84 308.326 256.449 337.582 294.583C332.387 302.122 326.583 309.228 320.251 315.807ZM200 200C139.306 200 84.932 227.04 48.2645 269.723C38.4967 248.499 33.0441 224.894 33.0441 200C33.0441 107.786 107.798 33.0441 200 33.0441C292.202 33.0441 366.956 107.798 366.956 200C366.956 224.894 361.503 248.499 351.735 269.723C315.056 227.04 260.682 200 200 200Z" fill="var(--text-muted)"/>
+                </g>
+                <defs>
+                    <clipPath id="footer-logo-clip">
+                        <rect width="1920" height="399.511" fill="white"/>
+                    </clipPath>
+                </defs>
+            </svg>
+            <p>&copy; 2026 Astrolabe, Inc.</p>
+        </footer>
+    </div>
+
+    <script>
+        const btcInput = document.getElementById('btcInput');
+        const apyInput = document.getElementById('apyInput');
+        const apyValue = document.getElementById('apyValue');
+        const yieldResult = document.getElementById('yieldResult');
+        const totalResult = document.getElementById('totalResult');
+        const ctx = document.getElementById('yieldChart').getContext('2d');
+
+        let myChart;
+
+        function initChart(principal, yieldAmt) {
+            const data = {
+                labels: ['Cold Storage', 'Astrolabe ILS'],
+                datasets: [{
+                    label: 'Principal (BTC)',
+                    data: [principal, principal],
+                    backgroundColor: '#7f9bbd',
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }, {
+                    label: 'Yield (BTC)',
+                    data: [0, yieldAmt],
+                    backgroundColor: '#4ea1ff',
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: { display: false, color: '#23334f' },
+                            ticks: { color: '#8aa0c2' }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            grid: { color: '#23334f' },
+                            ticks: { color: '#8aa0c2' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#8aa0c2' }
+                        }
+                    }
+                }
+            };
+
+            myChart = new Chart(ctx, config);
+        }
+
+        function updateCalculator() {
+            let principal = parseFloat(btcInput.value) || 0;
+            const max_principal = 1000000;
+            if (principal > max_principal) {
+                principal = max_principal;
+                btcInput.value = max_principal;
+            }
+            const rate = parseFloat(apyInput.value) || 0;
+            const yieldAmt = principal * (rate / 100);
+            const total = principal + yieldAmt;
+
+            apyValue.textContent = rate.toFixed(1) + '%';
+            yieldResult.textContent = '+' + yieldAmt.toFixed(2) + ' BTC';
+            totalResult.textContent = total.toFixed(2) + ' BTC';
+
+            if (myChart) {
+                myChart.data.datasets[0].data = [principal, principal];
+                myChart.data.datasets[1].data = [0, yieldAmt];
+                myChart.update();
+            }
+        }
+
+        initChart(100, 8.5);
+        updateCalculator();
+
+        btcInput.addEventListener('input', updateCalculator);
+        apyInput.addEventListener('input', updateCalculator);
+
+        // Scroll Animation
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        if (animatedElements.length > 0) {
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 100}ms`;
+                elementObserver.observe(el);
+            });
+        }
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = question.querySelector('.faq-icon');
+                const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer) {
+                        otherAnswer.style.maxHeight = '0';
+                        otherAnswer.parentElement.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if (isOpen) {
+                    answer.style.maxHeight = '0';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
