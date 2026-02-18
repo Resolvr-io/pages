@@ -135,13 +135,13 @@ Yes. Unlike traditional private reinsurance contracts which are illiquid, the ri
 
 ---
 
-## About Astrolabe
+## About Resolvr
 
-Astrolabe is bridging the global insurance market to bitcoin, making both systems more stable, secure, and capital-efficient.
+Resolvr is bridging the global insurance market to bitcoin, making both systems more stable, secure, and capital-efficient.
 
 We provide essential risk management infrastructure for every participant in the bitcoin ecosystem through bitcoin-native insurance technology.
 
-Discover what you can do with Astrolabe.
+Discover what you can do with Resolvr.
 
 ### What Sets Us Apart
 
