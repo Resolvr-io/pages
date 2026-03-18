@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Resolvr &mdash; RPM Split Payment Demo</title>
+
+        <!-- Open Graph / Social Media Card -->
+        <meta property="og:title" content="Resolvr - RPM Split Payment Demo" />
+        <meta
+            property="og:description"
+            content="We bridge the global insurance market to bitcoin, making both systems more stable, secure, and efficient. Watch the demo."
+        />
+        <meta
+            property="og:image"
+            content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/bdic/images/video-demo_social-image.png"
+        />
+        <meta property="og:type" content="website" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:image"
+            content="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/bdic/images/video-demo_social-image.png"
+        />
+        <style>
+            @import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #000;
+                color: #fff;
+                font-family: "Satoshi", sans-serif;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .view {
+                display: none;
+                width: 100%;
+                max-width: 640px;
+                margin: 0 auto;
+                padding: 40px 24px;
+                text-align: center;
+            }
+
+            .view.active {
+                display: block;
+            }
+
+            #watch {
+                max-width: 1200px;
+            }
+
+            /* Landing preview video */
+            .preview-wrap {
+                width: 50%;
+                max-width: 320px;
+                margin: 0 auto 40px;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #111;
+            }
+
+            .preview-wrap video {
+                width: 100%;
+                display: block;
+            }
+
+            .btn {
+                padding: 14px 28px;
+                border: none;
+                border-radius: 8px;
+                background: #14AFFE;
+                color: #000;
+                font-family: "Satoshi", sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: background 0.2s;
+                white-space: nowrap;
+            }
+
+            .btn:hover {
+                background: #0099e6;
+            }
+
+            /* Full demo video */
+            .video-wrap {
+                width: 100%;
+                max-width: 1080px;
+                margin: 0 auto 36px;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #111;
+                position: relative;
+            }
+
+            .video-wrap video {
+                width: 100%;
+                display: block;
+            }
+
+            .video-slate {
+                position: absolute;
+                inset: 0;
+                border: 0;
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.2) 0%,
+                    rgba(0, 0, 0, 0.6) 100%
+                );
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 14px;
+                cursor: pointer;
+                transition: opacity 0.2s ease;
+            }
+
+            .video-slate.hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .video-slate .play-pill {
+                width: 78px;
+                height: 78px;
+                border-radius: 999px;
+                border: 2px solid rgba(255, 255, 255, 0.9);
+                background: rgba(0, 0, 0, 0.35);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .video-slate .play-triangle {
+                width: 0;
+                height: 0;
+                margin-left: 4px;
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+                border-left: 18px solid #fff;
+            }
+
+            .video-slate .play-text {
+                font-family: "Satoshi", sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+            }
+
+            .logo-small {
+                margin: 40px auto 0;
+                width: 85px;
+            }
+
+            .logo-small img {
+                width: 100%;
+                height: auto;
+                display: block;
+                filter: brightness(0) invert(1);
+            }
+
+            .btn-outline {
+                display: inline-block;
+                padding: 14px 32px;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 8px;
+                background: transparent;
+                color: #fff;
+                font-family: "Satoshi", sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+                text-decoration: none;
+                transition:
+                    background 0.2s,
+                    border-color 0.2s;
+            }
+
+            .btn-outline:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.5);
+            }
+
+            @media (max-width: 520px) {
+                .preview-wrap {
+                    width: 70%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Landing View -->
+        <div class="view active" id="landing">
+            <div class="preview-wrap">
+                <video
+                    id="previewVideo"
+                    autoplay
+                    muted
+                    playsinline
+                    preload="auto"
+                    src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/resolvr/rpmdemo/RPM_Logo_Lockup_640x480.mp4"
+                ></video>
+            </div>
+            <button class="btn" id="watchBtn">Watch the Demo</button>
+        </div>
+
+        <!-- Video View -->
+        <div class="view" id="watch">
+            <div class="video-wrap">
+                <video
+                    id="demoVideo"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/resolvr/rpmdemo/RPM_Payment_Flows.mp4"
+                ></video>
+                <button
+                    id="videoSlate"
+                    class="video-slate"
+                    type="button"
+                    aria-label="Play demo video"
+                >
+                    <span class="play-pill" aria-hidden="true">
+                        <span class="play-triangle"></span>
+                    </span>
+                    <span class="play-text">Play Demo</span>
+                </button>
+            </div>
+            <a href="https://resolvr.io" class="btn-outline"
+                >Learn more at resolvr.io</a
+            >
+            <div class="logo-small">
+                <img
+                    src="https://mredgyusv1qtkwdp.public.blob.vercel-storage.com/branding/logo/resolvr-logo-white.svg"
+                    alt="Resolvr logo"
+                />
+            </div>
+            <p
+                style="
+                    color: rgba(255, 255, 255, 0.5);
+                    font-size: 12px;
+                    margin-top: 24px;
+                "
+            >
+                &copy; 2026 Resolvr, Inc.
+            </p>
+        </div>
+
+        <script>
+            const watchBtn = document.getElementById("watchBtn");
+            const demoVideo = document.getElementById("demoVideo");
+            const videoSlate = document.getElementById("videoSlate");
+
+            function showView(name) {
+                document
+                    .querySelectorAll(".view")
+                    .forEach((v) => v.classList.remove("active"));
+                document.getElementById(name).classList.add("active");
+            }
+
+            watchBtn.addEventListener("click", () => {
+                showView("watch");
+            });
+
+            videoSlate.addEventListener("click", async () => {
+                try {
+                    await demoVideo.play();
+                    videoSlate.classList.add("hidden");
+                } catch (err) {
+                    videoSlate.classList.remove("hidden");
+                }
+            });
+
+            demoVideo.addEventListener("play", () =>
+                videoSlate.classList.add("hidden"),
+            );
+            demoVideo.addEventListener("ended", () =>
+                videoSlate.classList.remove("hidden"),
+            );
+        </script>
+    </body>
+</html>
