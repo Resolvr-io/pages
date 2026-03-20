@@ -49,65 +49,49 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
             @import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap");
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
             body {
                 font-family: "Satoshi", sans-serif;
                 font-weight: 400;
-                background-color: #ffffff;
+                background-color: #000000;
                 color: #000000;
-                margin: 0;
-                padding: 0;
+                display: flex;
+                flex-direction: column;
             }
             header {
                 background-color: #000000;
                 padding: 1.5rem 2rem;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 100;
+                flex-shrink: 0;
             }
             .header-content {
                 display: flex;
                 align-items: center;
             }
             main {
-                margin-top: 80px;
-                margin-bottom: 80px;
+                flex: 1;
+                min-height: 0;
             }
             .iframe-container {
                 width: 100%;
-                height: calc(100vh - 160px);
-                position: relative;
+                height: 100%;
             }
             .iframe-container iframe {
                 width: 100%;
                 height: 100%;
                 border: none;
+                display: block;
             }
             footer {
                 background-color: #000000;
                 color: #ffffff;
                 text-align: center;
-                padding: 2rem;
-                font-size: 0.875rem;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: 100;
-            }
-            @media (max-width: 768px) {
-                footer {
-                    padding: 0.75rem;
-                    font-size: 0.75rem;
-                }
-                main {
-                    margin-bottom: 48px;
-                }
-                .iframe-container {
-                    height: calc(100vh - 128px);
-                    padding-bottom: 60px;
-                }
+                padding: 0.75rem;
+                font-size: 0.75rem;
+                flex-shrink: 0;
             }
         </style>
     </head>
